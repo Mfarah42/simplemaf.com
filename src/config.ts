@@ -7,9 +7,9 @@ export const LINKS: Record<string, string> = {
   tiktok: "https://www.tiktok.com/@simplemaf",
   bluesky: "https://bsky.app/profile/simplemaf.bsky.social",
   email: "mailto:YOUR_EMAIL",
-  stockd: "https://apps.apple.com/app/idYOUR_ID",
-  prayerwindows: "https://apps.apple.com/app/idYOUR_ID",
-  cadence: "https://apps.apple.com/app/id6786077175", // Cadence: Am I On or Off
+  stockd: "https://apps.apple.com/us/app/stockd-smart-grocery-lists/id6761667432",
+  prayerwindows: "https://apps.apple.com/us/app/prayer-windows/id6793598476", // in review; link goes live with the app
+  cadence: "https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175",
 };
 
 export interface ReceiptCell {
