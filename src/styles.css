@@ -159,6 +159,17 @@
   .btn-sm { padding: 10px 17px; font-size: 13.5px; border-radius: 12px; }
   @media (max-width: 480px) { .btn-row .btn { flex: 1 1 100%; } }
 
+  .follow-row { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 14px; }
+  .follow {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--hairline); text-decoration: none;
+    font-size: 13px; font-weight: 600; color: var(--ink2);
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .follow svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+  .follow:hover { color: var(--rust-deep); border-color: var(--ink3); }
+
   .hero-icons { display: flex; align-items: center; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
   .icon-stack { display: flex; }
   .icon-stack img {
