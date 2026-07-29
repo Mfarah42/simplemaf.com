@@ -1,0 +1,21 @@
+{
+  "_readme": "Rename this file to videos.json to override the inline video list in index.html. Same fields as the VIDEOS array: date, title, tags, and optionally url, receipt, note, sources. Newest first. Delete videos.json to fall back to the inline list.",
+  "videos": [
+    {
+      "date": "Jul 28",
+      "title": "Would you lease an iPhone?",
+      "tags": "#leasingiphone #apple #klarna #applelease",
+      "url": "https://www.tiktok.com/@simplemaf"
+    },
+    {
+      "date": "Jul 27",
+      "title": "Elon's new bank card pays 6%. Here's what it costs you.",
+      "tags": "#xmoney #elonmusk #privacy"
+    },
+    {
+      "date": "Jul 26",
+      "title": "AI distillation, explained",
+      "tags": "#techtok #aitools #claude #anthropic"
+    }
+  ]
+}

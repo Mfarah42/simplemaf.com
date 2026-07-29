@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpleMAF · Tech and money, from someone who ships</title>
+<meta name="description" content="Short videos on AI, tech, and what things cost. Three iOS apps on the App Store, all running entirely on your device. @simplemaf on TikTok.">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FEFBF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18181C" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="SimpleMAF · Tech and money, from someone who ships">
+<meta property="og:description" content="Short videos on AI, tech, and what things cost. Plus three private iOS apps.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAARGVYSWZNTQAqAAAACAABh2kABAAAAAEAAAAaAAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAABAoAMABAAAAAEAAABAAAAAAEZRQrAAAAHLaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4yNTY8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjU2PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CuYattQAAAaaSURBVGgF7VnZb1RVGL/nrrN1ZtopUyhbGyIUmhpAFiFVYtSYKG4v4JtGE+MLxn/Af8M345MajUZjeFBQFINEFsFSCJa2UEqhLe200zu9987c7fg7M5elVdK7TCEk8+WmvctZvt+3n2/IwMcHuMeZ+MeZecZ7A8Cj1mBDAw0NRJRAw4QiCjDy9IYGIosw4gINDUQUYOTpDQ1EFmHEBR57DYgRBbDEdEqrA/CXsBtS/bvEnGCf6w+Aui7n2GCZF0UiKUSUGPeu49oWtUzOtdkjLxCerwueegKgjs1RV8rm4x1d8XWb5BXtYioDDIxRx3EqulMqmoWJyvhIefyaVZhwKgYhPBHEKEjqBIBSaltKe0d290uprqfEdAvHCVVTgCac6g0vVQ9PSY69ccuGOT2uX7uoDZwvjw27FZ1IsmdmwSyII9HPxNR1IMWW3lebe18R4k1ggJplY2zQGBkwC+OuoeENr8TFbGusvROaETMtUAhzCl6ktlmZHCtdOFE8fZTadghVRNUAdRwhkVr55gepLTs5x4IJaVfOF379zrg5RC2LwHhqjgsVUQq7FzO5zLZnm3v3C7EktSrABlRSLq/2/+moMw8bAGQvxJPtb32U2NADbqCHwvHvp3/5GgKG7xJZud8cagHILhWnj32jD19adfBDKdsKt2EXnDssRcgDkCjh2157z+NekmdPH5k+8iWTOYs8/09QAi/H9Ov/THz7iWuWQ4h80brhAbi2md31YtOTe2uyr9wamT76FeKjH554WdGG+4tnfiYifDcShQQA45FzK1v2vc5CJ4iQmROHHa3Eors/gpbmzhxzNJX5SQTyu9+iLcB3ZsfzYjrHuS7hBXP61vzAOZ6FQr/EZhXGjdErnCBzvmH/d/VQACgVU9l0zx5kXLaiIGpD/Y6u+jGe+zlAztYG/7bVGUedRfi6/5P/+zBhFOKPr9soNec9+6GuMXIZvut/19pIaEw9d7x08RRHqWsa4fQQCgB1Ex2bmb9CA4S4FcOcuskegxN1bWqUWA4O6wlhAPCCpKxc7ymdEEeft+fn/LvvQpjhWffUuHA5H08I/0qMlQOoOln4IY4xj9rBx8xlGRLciSlFJuJjCZQGjCPCw4SYM4S1gYiwAgOgHOVFmQjItVUA+IdC3zu4RGQmzPTAANgm/ELDfXTcM16CoyaoQGsO4M2NkIaC7754RmAAMHXXqqAQYrEPBJfAuTFUDF3MS6jnwADAN7wWedeLmwAQTxBRBJJQDESdFBwAIdSsWIXJWuKE++IUJig4KkYDQHmOBs7lQB8cALMatzw2dMeEXJxpcM7Cy3DCpA4qcFdMqUJC51yeXUEoTCaGxWtXL+VMg5k+8pqk4DivX7/M+guBCOqzSXztWKb7otikAkllqq3Yt9XWksguPlcKBre2KBg1J0bLo4Mex9RNbugJ7seUiIl0j5h7+qTcMkt4h5fN5PobuT1/8JLlqdcHiDAAsCySF/oItfVZcdrRJedW4ZTjY0dvCHoQiY6uXK8O1mltHkV845TWmfjqMer4ZczvuEWcoY0zf/msNtjH+jnw42Q6s+M51hfxT4RPb99FK4N3Evq9mVJmzr9DhwSA3SDvqR8/d1gdKkAh2Z0vxNc9gZt7jDz4DpkktWlbavNeyqEFtpgcPbH41YOfwwOAA5THRyYPf1aNP4SPxdveeB9V6pI9EjQBlBVr8i+/TQRFbH6XCIhCHoNE4GwtbtxcTQS/1igc2tf9YHhLfMHeaEYgqSU3bkV5JKabE53dlVvXrNkpzLzX1aotg5iDGsS24p1b2g8ekltXsUav0FW6dFaQRnnZRY631PTMmd1WscV/FKpHa9Ey0VzJ739HbGphhmVo6rnf1AsncdJHzvYSHPK2ElPya9Jbn8GFghx1OA4Skz98qvadkjO6lC26tmjO5FwThYlf8TMxRe+NYhWYjdy2pvWFA6muHUREQw7ZWjdnbttzU46hYwCSndS8AsdoIsUwHDj1q5emfvrCuDHIehmU0Gr+YoInwTJ6fQAwDNUzDc7Kme374p3dEhrUwoLWIsZwrmlrKrK4ev73+YG/qGWzIioaRZ1/d/daUoNccQlNWSW/Vs6vltI5WA7jvFJGVxSNIPP2DatYwO8drHkamXusXDcANSS1rqirl/Thfm2o7y487yvh2W8zCDu46kR1BuBxhd9dRBzbHgaFzwMPgzsfezQA+BDSsg5paGBZxetj8YYGfAhpWYc0NLCs4vWxeEMDPoS0rEP+BexsuE9TCvcoAAAAAElFTkSuQmCC">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohamed",
+  "alternateName": "SimpleMAF",
+  "description": "Creator explaining AI, tech, and money. Indie iOS developer.",
+  "sameAs": [
+    "https://www.tiktok.com/@simplemaf",
+    "https://bsky.app/profile/simplemaf.bsky.social"
+  ],
+  "knowsAbout": ["Artificial intelligence", "Consumer technology", "Personal finance", "iOS development"]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name serif" href="#top">SimpleMAF<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#explainers" class="collapse">Explainers</a>
+      <a href="#apps">Apps</a>
+      <a href="#decoder">Decoder</a>
+      <a href="#math" class="collapse">Run&nbsp;the&nbsp;math</a>
+      <a href="#stack" class="collapse">Stack</a>
+      <a href="#play" class="collapse">Game</a>
+      <button id="themeBtn" class="theme-btn" type="button" aria-label="Switch theme" title="Theme: follows your system"><span id="themeIcon">◐</span></button>
+      <a class="nav-cta" data-social="tiktok" href="#">TikTok</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap" id="top">
+  <span class="eyebrow">Tech · Money · Bay Area</span>
+  <h1 class="serif">I explain tech and money. I also <em>ship</em> it.</h1>
+  <p class="lede">I'm Mohamed, the guy behind <strong>@simplemaf</strong>. I make short videos about AI, new tech, and money. What a model release changes, whether the lease deal beats buying, what the fine print says once you read it. I also build iOS apps. Three are on the App Store, and none of them collect your data.</p>
+  <div class="btn-row">
+    <a class="btn btn-clay" data-social="tiktok" href="#">Watch on TikTok</a>
+    <a class="btn btn-primary" href="#apps">Get the apps</a>
+    <a class="btn btn-ghost" href="#decoder">Decode the jargon</a>
+  </div>
+  <div class="hero-icons">
+    <div class="icon-stack">
+      <img src="assets/stockd.png" alt="Stockd app icon" width="40" height="40">
+      <img src="assets/prayerwindows.png" alt="Prayer Windows app icon" width="40" height="40">
+      <img src="assets/cadence.png" alt="Cadence app icon" width="40" height="40">
+    </div>
+    <span>Stockd, Prayer Windows, and Cadence. All live on the App&nbsp;Store.</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b class="serif">3</b><span>apps on the App&nbsp;Store</span></div>
+    <div class="stat"><b class="serif">100%</b><span>on-device, always</span></div>
+    <div class="stat"><b class="serif">0</b><span>trackers, ever</span></div>
+    <div class="stat"><b class="serif">1</b><span>guy, one terminal</span></div>
+  </div>
+</div>
+
+<!-- ================= EXPLAINERS ================= -->
+<section id="explainers" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">The Feed</span>
+    <h2 class="serif">What I make videos about</h2>
+    <p>AI news without the press-release language, whether new tech is worth the price, and what apps quietly do with your data. Tap a video for the numbers and sources that didn't fit in 45 seconds.</p>
+  </div>
+  <div class="vid-list" id="vidList"></div>
+  <div style="margin-top:26px">
+    <a class="btn btn-primary btn-sm" data-social="tiktok" href="#">All videos on TikTok →</a>
+  </div>
+</section>
+
+<!-- ================= APPS ================= -->
+<section id="apps" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Shipped</span>
+    <h2 class="serif">Apps I've published</h2>
+    <p>All native SwiftUI. Everything runs on your phone and nothing phones home, so they work in airplane mode.</p>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-top">
+        <img class="app-icon" src="assets/stockd.png" alt="Stockd app icon" width="62" height="62">
+        <span class="chip chip-live">Live</span>
+      </div>
+      <h3 class="serif">Stockd</h3>
+      <p class="tagline">Grocery lists that sort themselves by aisle and track prices across stores. Say “taco night for 6” and Apple's on-device model builds the whole list without touching a server.</p>
+      <p class="meta mono">SwiftUI · Foundation Models · Live Activities</p>
+      <a class="applink" data-social="stockd" href="#">Get it on the App&nbsp;Store →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <img class="app-icon" src="assets/prayerwindows.png" alt="Prayer Windows app icon" width="62" height="62">
+        <span class="chip chip-live">Live</span>
+      </div>
+      <h3 class="serif">Prayer Windows</h3>
+      <p class="tagline">Prayer times, honestly. Other apps give you one number per prayer. This one shows when each window begins <em>and</em> ends, why trusted methods disagree by 20 minutes in summer, and how your mosque compares.</p>
+      <p class="meta mono">SwiftUI · Widgets · Notifications · Fully offline</p>
+      <a class="applink" data-social="prayerwindows" href="#">Get it on the App&nbsp;Store →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <img class="app-icon" src="assets/cadence.png" alt="Cadence app icon" width="62" height="62">
+        <span class="chip chip-live">Live</span>
+      </div>
+      <h3 class="serif">Cadence</h3>
+      <p class="tagline">Am I on or off? A calendar that speaks rotation. 14/14, 21/7, whatever your hitch is: one glance answers it, shows when you're free, and what the check looks like.</p>
+      <p class="meta mono">SwiftUI · Widgets · Free forever · Data Not Collected</p>
+      <a class="applink" data-social="cadence" href="#">Get it on the App&nbsp;Store →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= NOW ================= -->
+<section id="now" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Now</span>
+    <h2 class="serif">What I'm working on</h2>
+  </div>
+  <div class="panel">
+    <p><span class="pulse"></span><b>On the bench this week</b></p>
+    <p style="color:var(--ink2); max-width:68ch; margin-top:12px">Stockd v1.3.0 is in App Store review with a new icon. Prayer Windows is getting AlarmKit so Fajr can actually wake you up. And I'm recording explainers on the AI terms that keep showing up in headlines undefined. Those land in <a href="#decoder" style="color:var(--rust-deep)">the decoder</a> below.</p>
+    <p class="stamp">Updated July 2026</p>
+  </div>
+</section>
+
+<!-- ================= DECODER ================= -->
+<section id="decoder" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Reference</span>
+    <h2 class="serif">The AI decoder</h2>
+    <p>The terms you've heard in AI headlines and nodded along to. One plain sentence each, plus why it matters to you. Search, or tap one open.</p>
+  </div>
+  <div class="decoder-bar">
+    <input type="search" id="decoderSearch" placeholder="Search: try “distillation”" aria-label="Search AI terms" autocomplete="off">
+    <div class="filters" id="decoderFilters" role="group" aria-label="Filter terms by category"></div>
+  </div>
+  <div class="terms" id="decoderTerms"></div>
+  <p id="decoderEmpty">Nothing matches that yet. <a data-social="tiktok" href="#" style="color:var(--rust-deep)">Ask me on TikTok</a> and it'll probably become a video.</p>
+</section>
+
+<!-- ================= CALCULATOR ================= -->
+<section id="math" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Do It Yourself</span>
+    <h2 class="serif">Run the math: lease vs. buy</h2>
+    <p>Every pricing video gets the same comment: “but what about my situation?” Fair. Here's the arithmetic with your numbers instead of mine. It all runs in your browser and nothing is sent anywhere.</p>
+  </div>
+  <div class="calc">
+    <div class="panel calc-fields">
+      <div class="field">
+        <label for="cPrice">Sticker price if you just buy it<span class="hint">What it costs outright, before tax.</span></label>
+        <div class="field-in"><span class="pre">$</span><input type="number" id="cPrice" value="1199" min="0" step="10" inputmode="decimal"></div>
+      </div>
+      <div class="field">
+        <label for="cMonthly">Monthly payment on the lease or plan<span class="hint">The number in the ad.</span></label>
+        <div class="field-in"><span class="pre">$</span><input type="number" id="cMonthly" value="54" min="0" step="1" inputmode="decimal"></div>
+      </div>
+      <div class="field">
+        <label for="cMonths">How long you'll keep it<span class="hint">Months. Be honest with yourself.</span></label>
+        <div class="field-in"><input type="number" id="cMonths" value="24" min="1" step="1" inputmode="numeric"></div>
+      </div>
+      <div class="field">
+        <label for="cResale">What it's worth when you're done<span class="hint">Resale or trade-in, if you own it. Zero if you hand it back.</span></label>
+        <div class="field-in"><span class="pre">$</span><input type="number" id="cResale" value="450" min="0" step="10" inputmode="decimal"></div>
+      </div>
+      <div class="field">
+        <label for="cUpfront">Anything due up front on the plan<span class="hint">Down payment, activation, first month.</span></label>
+        <div class="field-in"><span class="pre">$</span><input type="number" id="cUpfront" value="0" min="0" step="10" inputmode="decimal"></div>
+      </div>
+    </div>
+
+    <div class="calc-out" aria-live="polite">
+      <div class="calc-row">
+        <span class="lab"><b>Lease / monthly plan</b>You pay every month and own nothing at the end.</span>
+        <span class="val" id="oLease">—</span>
+      </div>
+      <div class="calc-row">
+        <span class="lab"><b>Buy outright</b>Price now, minus what you sell it for later.</span>
+        <span class="val" id="oBuy">—</span>
+      </div>
+      <div class="calc-row">
+        <span class="lab"><b>Real cost per month</b>Lease vs. buy, side by side.</span>
+        <span class="val" id="oPer">—</span>
+      </div>
+      <p class="verdict" id="oVerdict">—</p>
+      <p class="stamp">This is arithmetic on the numbers you typed, not financial advice. It ignores tax, interest, insurance, and the upgrade itch. Check the actual contract.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MANIFESTO + SPEC TABLE ================= -->
+<section class="wrap">
+  <div class="manifesto">
+    <span class="eyebrow">The Promise</span>
+    <h2 class="serif">No ads. No accounts. No tracking. Ever.</h2>
+    <p>I spend a lot of airtime explaining how companies make money off your data. It would be strange to turn around and do the same thing. So here's the claim as a spec sheet you can check, app by app.</p>
+    <div class="table-scroll">
+      <table>
+        <caption class="mono" style="caption-side:bottom;text-align:left;font-size:12px;color:var(--ink3);padding-top:12px">Verifiable against each app's App Store privacy label.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Claim</th>
+            <th scope="col"><img src="assets/stockd.png" alt="" width="26" height="26">Stockd</th>
+            <th scope="col"><img src="assets/prayerwindows.png" alt="" width="26" height="26">Prayer&nbsp;Windows</th>
+            <th scope="col"><img src="assets/cadence.png" alt="" width="26" height="26">Cadence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>No ads</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>No account required</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>No analytics or trackers</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Works in airplane mode</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>On-device AI</td><td class="yes">✓</td><td class="no"></td><td class="no"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-foot">The blank cells are on purpose. Not every app needs a language model, and bolting one on just to say so is the kind of thing I make videos complaining about.</p>
+  </div>
+</section>
+
+<!-- ================= STACK ================= -->
+<section id="stack" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Uses</span>
+    <h2 class="serif">The stack</h2>
+    <p>The most-asked question under every build video, answered once. No affiliate links. If it's on this list, I use it.</p>
+  </div>
+  <div class="stack-grid" id="stackGrid"></div>
+</section>
+
+<!-- ================= GAME ================= -->
+<section id="play" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Intermission</span>
+    <h2 class="serif">Ship It</h2>
+    <p>Thirty seconds of my job: catch the features, dodge the bugs. Drag anywhere on the board, or use the ← → keys.</p>
+  </div>
+  <div class="game-shell">
+    <div class="game-hud">
+      <span>Shipped <b id="score">0</b></span>
+      <span>Time <b id="time">30</b>s</span>
+      <span class="best">Best <b id="best">0</b></span>
+    </div>
+    <div id="gameWrap">
+      <canvas id="game" width="900" height="470" role="img" aria-label="Ship It, an arcade game where you catch falling features and avoid bugs"></canvas>
+      <div id="gameOverlay">
+        <div>
+          <h3 class="serif" id="overlayTitle">Ship It</h3>
+          <p id="overlayText">Catch features to ship them. Bugs and cloud dependencies cost you three. This codebase stays clean.</p>
+          <button class="btn btn-clay" id="playBtn" type="button">Start the sprint</button>
+          <div class="legend" id="legend">
+            <span>⚡ 🧠 ✨ 📱 &nbsp;ship it · <b>+1</b></span>
+            <span>🐛 ☁️ 📊 💸 &nbsp;not today · <b>−3</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="game-foot">
+      <span id="gameNote">Best score saved on your device, like everything else around here.</span>
+      <button class="btn btn-ghost btn-sm" id="shareBtn" type="button" hidden>Copy my score</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COLLAB ================= -->
+<section id="collab" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Work With Me</span>
+    <h2 class="serif">Collabs &amp; requests</h2>
+  </div>
+  <div class="collab">
+    <div class="panel">
+      <h3 class="serif">For brands</h3>
+      <p>If you're building in AI, privacy, or iOS and want it explained to an audience that asks what it costs and where the data goes, I'm open to talking. I use the product first, I say what I actually think of it, and the partnership is disclosed in the video.</p>
+      <ul class="rules">
+        <li>No scripted reads for products I haven't used</li>
+        <li>No crypto, no undisclosed sponsorships</li>
+        <li>Nothing I wouldn't put on my own phone</li>
+        <li>Editorial control stays with me, always</li>
+      </ul>
+      <p style="margin-top:20px"><a class="btn btn-primary btn-sm" data-social="email" href="#">Get in touch →</a></p>
+    </div>
+    <div class="panel">
+      <h3 class="serif">For viewers</h3>
+      <p>Got a term you can't pin down, or a gadget you want the honest math on? Most of my videos start as a comment somebody left.</p>
+      <p style="margin-top:16px"><a class="btn btn-ghost btn-sm" data-social="tiktok" href="#">Request a topic →</a></p>
+      <p class="stamp">Everything on this page is static HTML on purpose. No analytics, no cookie banner, nothing to accept. You're not being counted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONNECT ================= -->
+<section id="connect" class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Connect</span>
+    <h2 class="serif">Follow along</h2>
+    <p>TikTok is the one to follow. Bluesky is brand new and mostly empty for now. The other two are coming.</p>
+  </div>
+  <div class="social-row">
+    <a class="social" data-social="tiktok" href="#"><span class="dot"></span>TikTok</a>
+    <a class="social" data-social="bluesky" href="#"><span class="dot"></span>Bluesky</a>
+    <span class="social soon"><span class="dot"></span>X / Twitter <small>Soon</small></span>
+    <span class="social soon"><span class="dot"></span>Instagram <small>Soon</small></span>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Mohamed (@simplemaf) · Built in the Bay.</span>
+    <span class="serif" style="font-style:italic">Calm software, honestly made.</span>
+  </footer>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
