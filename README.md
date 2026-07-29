@@ -25,8 +25,8 @@ index.html            markup template (sections, no logic)
 src/config.ts         ALL editable content: LINKS, VIDEOS, TERMS, STACK
 src/styles.css        the Prayer Windows design language, light + dark
 src/lib/dom.ts        esc(), safeUrl() allowlist, storage helpers
-src/features/*.ts     one module per section (videos, decoder, calculator,
-                      theme, game, stack, links, ⌘K palette)
+src/features/*.ts     one module per section (videos, calculator, theme,
+                      game, stack, links, ⌘K palette)
 tests/                vitest suite: calculator math, escaping, URL
                       sanitizing, videos.json normalization, game scoring
 .github/workflows/    check → build → deploy to Pages
@@ -42,8 +42,7 @@ Everything you'd routinely touch lives in [src/config.ts](src/config.ts):
 2. **VIDEOS** – newest first. Optional per video: `url`, `receipt` (the
    numbers behind the video), `note`, `sources`. Rows with receipts expand
    in place; rows without link to TikTok.
-3. **TERMS** – the AI decoder. Add a term, it shows up searchable.
-4. **STACK** – gear list. A few entries are educated guesses; swap in the
+3. **STACK** – gear list. A few entries are educated guesses; swap in the
    real gear.
 
 Push to `main` and CI ships it — if the tests pass.

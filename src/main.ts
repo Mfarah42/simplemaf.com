@@ -11,7 +11,6 @@ if (window.top !== window.self) {
 
 import { initLinks } from "./features/links";
 import { initVideos } from "./features/videos";
-import { initDecoder } from "./features/decoder";
 import { initStack } from "./features/stack";
 import { initCalculator } from "./features/calculator";
 import { initTheme } from "./features/theme";
@@ -20,7 +19,6 @@ import { initPalette } from "./features/palette";
 
 initLinks();
 initVideos();
-initDecoder();
 initStack();
 initCalculator();
 const theme = initTheme();
