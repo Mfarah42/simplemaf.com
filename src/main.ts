@@ -40,7 +40,7 @@ initShowcase();
 
 // A quiet hello for whoever opens devtools. You know who you are.
 console.log(
-  "%cSimpleMAF %c⌘K works here. Static file, no trackers. View source, it's all there.",
+  "%cSimpleMAF %c⌘K works here. One static file. View source, it's all there.",
   "font-weight:700",
   "font-weight:400",
 );
