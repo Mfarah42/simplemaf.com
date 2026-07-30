@@ -90,7 +90,7 @@
     <h2 class="serif">What I make videos about</h2>
     <p>AI news without the press-release language, whether new tech is worth the price, and what apps quietly do with your data. Tap a video for the numbers and sources that didn't fit in 45 seconds.</p>
   </div>
-  <div class="vid-list" id="vidList" data-reveal></div>
+  <div class="vid-list" id="vidList"></div>
   <div style="margin-top:26px">
     <a class="btn btn-primary btn-sm" data-social="tiktok" href="#">All videos on TikTok →</a>
   </div>
@@ -163,41 +163,107 @@
         <div class="phone-screen">
           <div class="pw-notif">
             <img src="assets/prayerwindows.png" alt="" width="26" height="26">
-            <div><b>Maghrib ends in 30 min</b><span>The window closes at 9:45 PM</span></div>
+            <div><b>Maghrib ends in 30 min</b><span>The window closes at 9:15 PM</span></div>
           </div>
+
           <div class="pw-top" style="--i:0">
             <b class="serif">Prayer Windows</b>
-            <span>OAKLAND, CA</span>
+            <span>LOS ANGELES, CALIFORNIA</span>
           </div>
-          <div class="pw-date" style="--i:1">Wednesday, July 29 · 15 Safar 1448 AH</div>
+          <div class="pw-datebar" style="--i:1">
+            <i class="pw-nav">‹</i>
+            <div><b>Wednesday, July 29</b><span>15 Safar 1448 AH</span></div>
+            <i class="pw-nav">›</i>
+          </div>
+
           <div class="pw-hero">
-            <span class="pw-active">● MAGHRIB · ACTIVE NOW</span>
+            <span class="pw-active"><i></i>MAGHRIB · ACTIVE NOW</span>
             <b class="serif pw-count" id="pwCountdown">30:48</b>
-            <span class="pw-ends">Ends 9:45 PM</span>
-            <div class="pw-bar"><i class="pw-bar-fill"></i><i class="pw-bar-knob"></i></div>
-            <div class="pw-bar-labels"><span>8:21</span><span>PRAYER WINDOW</span><span>9:45</span></div>
+            <span class="pw-ends">Ends 9:15 PM</span>
+            <div class="pw-barrow">
+              <span>7:57</span>
+              <div class="pw-bar"><i class="pw-bar-fill"></i><i class="pw-bar-knob"></i></div>
+              <span>9:15</span>
+            </div>
+            <span class="pw-barcap">PRAYER WINDOW</span>
           </div>
+
           <div class="pw-chart">
-            <svg viewBox="0 0 260 70" preserveAspectRatio="none">
-              <path class="pw-curve-alt" d="M14,60 L26,56 C48,40 96,12 124,12 C146,12 160,24 174,32 C190,42 206,54 216,58 L240,61"/>
-              <path class="pw-curve" d="M8,61 L20,57 C42,41 90,13 118,13 C140,13 154,25 168,33 C184,43 200,55 210,59 L234,62"/>
-              <circle cx="20" cy="57" r="3" class="pw-dot"/>
-              <circle cx="118" cy="13" r="3" class="pw-dot"/>
-              <circle cx="168" cy="33" r="3" class="pw-dot"/>
-              <circle cx="210" cy="59" r="4.5" class="pw-dot pw-dot-active"/>
-              <circle cx="234" cy="62" r="3" class="pw-dot"/>
+            <div class="pw-chart-keys">
+              <span style="left:11%; color:var(--pw-twilight)">FAJR</span>
+              <span style="left:45%; color:var(--pw-gold)">DHUHR</span>
+              <span style="left:61%; color:var(--pw-olive)">ASR</span>
+              <span style="left:74%; color:var(--pw-rust)">MAGHRIB</span>
+              <span style="left:80%; top:11px; color:var(--pw-twilight)">ISHA</span>
+            </div>
+            <svg viewBox="0 0 260 74" preserveAspectRatio="none">
+              <line class="pw-grid" x1="28" y1="10" x2="28" y2="58"/>
+              <line class="pw-grid" x1="117" y1="10" x2="117" y2="58"/>
+              <line class="pw-grid" x1="158" y1="10" x2="158" y2="58"/>
+              <line class="pw-grid" x1="192" y1="10" x2="192" y2="58"/>
+              <line class="pw-horizon" x1="4" y1="58" x2="256" y2="58"/>
+              <path class="pw-curve-alt" d="M6,57 L24,56 C58,49 88,12 115,12 C138,12 148,25 156,33 C170,45 182,54 190,57 L240,58"/>
+              <path class="pw-curve" d="M6,58 L28,57 C60,50 90,14 117,14 C140,14 150,26 158,34 C172,46 184,54 192,57 L250,58"/>
+              <line class="pw-isha-line" x1="207" y1="12" x2="207" y2="58"/>
+              <circle class="pw-dot" cx="28" cy="57" r="2.8"/>
+              <circle class="pw-dot" cx="117" cy="14" r="2.8"/>
+              <circle class="pw-dot" cx="158" cy="34" r="2.8"/>
+              <circle class="pw-dot" cx="192" cy="57" r="2.8"/>
+              <circle class="pw-moon" cx="207" cy="58" r="4.2"/>
             </svg>
-            <div class="pw-legend"><span>— ISNA (yours)</span><span>--- other methods</span><b>COMPARE ›</b></div>
+            <div class="pw-chart-times">
+              <span style="left:11%">4:44</span>
+              <span style="left:45%">1:02</span>
+              <span style="left:61%">4:44</span>
+              <span style="left:74%">7:57</span>
+              <span style="left:80%; top:9px">9:15</span>
+            </div>
+            <div class="pw-legend">
+              <span><i class="pw-key-solid"></i>ISNA (yours)</span>
+              <span><i class="pw-key-dash"></i>other methods</span>
+              <b>COMPARE ›</b>
+            </div>
           </div>
+
           <div class="pw-rows">
-            <div class="pw-row" style="--i:2"><i class="pw-pdot" style="--c:var(--pw-twilight)"></i><span class="serif">Fajr</span><span class="pw-vary">varies 23 min · why ›</span><div class="pw-t"><b class="serif">4:46 AM</b><span>until 6:10 AM</span></div></div>
-            <div class="pw-row" style="--i:3"><i class="pw-pdot" style="--c:var(--pw-gold)"></i><span class="serif">Dhuhr</span><div class="pw-t"><b class="serif">1:18 PM</b><span>until 5:06 PM</span></div></div>
-            <div class="pw-row" style="--i:4"><i class="pw-pdot" style="--c:var(--pw-olive)"></i><span class="serif">Asr</span><div class="pw-t"><b class="serif">5:06 PM</b><span>until 8:21 PM</span></div></div>
-            <div class="pw-row pw-row-active" style="--i:5"><i class="pw-pdot" style="--c:var(--pw-rust)"></i><span class="serif">Maghrib</span><div class="pw-t"><b class="serif">8:21 PM</b><span>until 9:45 PM</span></div></div>
-            <div class="pw-row" style="--i:6"><i class="pw-pdot" style="--c:var(--pw-twilight)"></i><span class="serif">Isha</span><div class="pw-t"><b class="serif">9:45 PM</b><span>until 12:33 AM</span></div></div>
+            <div class="pw-row" style="--i:2">
+              <i class="pw-pdot" style="--c:var(--pw-twilight)"></i>
+              <div class="pw-name"><span class="serif">Fajr</span><em class="pw-vary">Varies by 21 min across methods · why ›</em></div>
+              <div class="pw-t"><b class="serif">4:44 AM</b><span>until 6:03 AM</span></div>
+            </div>
+            <div class="pw-row" style="--i:3">
+              <i class="pw-pdot" style="--c:var(--pw-gold)"></i>
+              <div class="pw-name"><span class="serif">Dhuhr</span></div>
+              <div class="pw-t"><b class="serif">1:02 PM</b><span>until 4:44 PM</span></div>
+            </div>
+            <div class="pw-row" style="--i:4">
+              <i class="pw-pdot" style="--c:var(--pw-olive)"></i>
+              <div class="pw-name"><span class="serif">Asr</span></div>
+              <div class="pw-t"><b class="serif">4:44 PM</b><span>until 7:57 PM</span></div>
+            </div>
+            <div class="pw-row pw-row-active" style="--i:5">
+              <i class="pw-pdot" style="--c:var(--pw-rust)"></i>
+              <div class="pw-name"><span class="serif">Maghrib</span></div>
+              <div class="pw-t"><b class="serif">7:57 PM</b><span>until 9:15 PM</span></div>
+            </div>
+            <div class="pw-row" style="--i:6">
+              <i class="pw-pdot" style="--c:var(--pw-twilight)"></i>
+              <div class="pw-name"><span class="serif">Isha</span></div>
+              <div class="pw-t"><b class="serif">9:15 PM</b><span>until 12:20 AM</span></div>
+            </div>
           </div>
+
+          <div class="pw-sun-facts">
+            <span>Sunrise 6:03 AM</span><span>Midnight 12:20 AM</span><span>Last third 1:48 AM</span>
+          </div>
+          <p class="pw-hanafi">Hanafi Asr: <b>5:53 PM</b> · both are held by major schools.</p>
+
           <div class="pw-tabbar">
-            <span class="on">Today</span><span>Month</span><span>Qibla</span><span>Masjids</span><span>Settings</span>
+            <span class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4" fill="currentColor"/></svg>Today</span>
+            <span><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><line x1="3.5" y1="10" x2="20.5" y2="10"/></svg>Month</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 3.5 L16 20 L12 16.5 L8 20 Z"/></svg>Qibla</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 3.5c3 0 5.5 2.4 5.5 5.4C17.5 13 12 20.5 12 20.5S6.5 13 6.5 8.9C6.5 5.9 9 3.5 12 3.5Z"/><circle cx="12" cy="9" r="1.9" fill="currentColor"/></svg>Masjids</span>
+            <span><svg viewBox="0 0 24 24"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="15" cy="8" r="2.2" fill="currentColor"/><circle cx="9" cy="16" r="2.2" fill="currentColor"/></svg>Settings</span>
           </div>
         </div>
       </div>

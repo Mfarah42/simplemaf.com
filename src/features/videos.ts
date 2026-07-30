@@ -1,6 +1,7 @@
 import { VIDEOS, type Video } from "../config";
 import { byId, esc, safeUrl } from "../lib/dom";
 import { resolved } from "./links";
+import { registerReveals } from "./reveal";
 
 const MAX_VIDEOS = 8;
 const MAX_JSON_BYTES = 64 * 1024;
@@ -34,7 +35,7 @@ export function renderVideos(videos: Video[]): void {
   list.innerHTML = videos
     .map((v, i) => {
       const expandable = hasReceipt(v);
-      return `<div class="vid" data-i="${i}" data-receipt="${expandable ? "1" : "0"}">
+      return `<div class="vid" data-reveal data-i="${i}" data-receipt="${expandable ? "1" : "0"}">
       <button class="vid-head" type="button" aria-expanded="false">
         <span class="kicker">${esc(v.date)}</span>
         <span class="vb">
@@ -63,6 +64,9 @@ export function renderVideos(videos: Video[]): void {
       if (url) window.open(url, "_blank", "noopener,noreferrer");
     });
   });
+
+  // each row reveals on its own as the visitor scrolls the list
+  registerReveals(list);
 }
 
 const str = (v: unknown): string | undefined => (typeof v === "string" ? v : undefined);
