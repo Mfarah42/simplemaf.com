@@ -7,7 +7,7 @@
   :root, :root[data-theme="light"] {
     --paper:       #FEFBF6;
     --paper-deep:  #F7F3ED;
-    --card:        #FFFFFF;
+    --card:        #FBF8F2;   /* barely off the paper: panels, not white boxes */
     --well:        #F3F0EB;
     --well-warm:   #EDE7DD;
     --ink:         #19191D;
@@ -21,14 +21,14 @@
     --gold:        #A8842F;
     --twilight:    #4A6B88;
     --on-rust:     #FFFCF8;
-    --shadow:      0 1px 2px rgba(25,25,29,.05);
+    --shadow:      0 1px 2px rgba(25,25,29,.03);
     --shadow-lift: 0 14px 30px rgba(25,25,29,.10);
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --paper:       #18181C;
       --paper-deep:  #101012;
-      --card:        #252429;
+      --card:        #212026;
       --well:        #202024;
       --well-warm:   #2D2B28;
       --ink:         #F6F3EE;
@@ -50,7 +50,7 @@
   :root[data-theme="dark"] {
     --paper:       #18181C;
     --paper-deep:  #101012;
-    --card:        #252429;
+    --card:        #212026;
     --well:        #202024;
     --well-warm:   #2D2B28;
     --ink:         #F6F3EE;
@@ -694,20 +694,19 @@
   /* ================= Contact ================= */
   /* A full-bleed warm band so the one section people need to find cannot be
      scrolled past. No card: the band itself is the emphasis. */
+  /* Understated, the way Daydream ends a page: a hairline, generous air, and
+     centred type. Findable because of placement and space, not colour. */
   .contact-band {
-    background: var(--well-warm);
     border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    padding: 96px 0 !important;
-    margin-bottom: 0;
+    padding: 120px 0 !important;
   }
   .contact { text-align: center; padding: 0; }
-  .contact h2 { font-size: clamp(30px, 5vw, 44px); margin-top: 10px; }
-  .contact > p { color: var(--ink2); margin-top: 10px; font-size: 17px; }
+  .contact h2 { font-size: clamp(28px, 4.2vw, 40px); margin-top: 12px; }
+  .contact > p { color: var(--ink2); margin-top: 12px; font-size: 16.5px; }
   .contact-btns { justify-content: center; margin-top: 30px; }
-  .btn-lg { padding: 16px 30px; font-size: 16.5px; border-radius: 17px; }
+  .btn-lg { padding: 14px 26px; font-size: 15.5px; border-radius: 16px; }
   .contact-socials { justify-content: center; margin-top: 28px; }
-  .contact .social { background: var(--card); }
+  .contact .social { background: transparent; box-shadow: none; }
 
   /* the game sits well below, quieter, as the last stop before the footer */
   #play { padding-top: 120px; }
