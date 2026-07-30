@@ -17,7 +17,7 @@ export const LINKS: Record<string, string> = {
     While it is empty or still the placeholder, no analytics script loads and
     the page makes no third-party requests at all. */
 export const ANALYTICS = {
-  measurementId: "G-YOUR_ID",
+  measurementId: "G-7R2W4LPMZN",
 };
 
 export interface ReceiptCell {
