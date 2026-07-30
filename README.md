@@ -3,7 +3,8 @@
 The SimpleMAF creator site. TypeScript source, unit-tested logic, and a build
 that collapses everything into **one self-contained static HTML file** — CSS
 and JS inlined, the app icons inlined as data URIs, a Content-Security-Policy
-injected at build time. No analytics, no external requests, no backend.
+injected at build time. No backend. Google Analytics is opt-in via
+src/config.ts and stays entirely inert until a Measurement ID is set.
 
 **Live at [simplemaf.com](https://simplemaf.com)** · deployed by GitHub Actions
 to GitHub Pages on every push to `main`, with typecheck + tests as the gate.
@@ -71,7 +72,8 @@ scheme-checked, so a malformed row degrades to being skipped, never to XSS.
 
 ## House rules baked into the page
 
-- No analytics, no cookie banner, no external requests except the optional
+- No external requests except Google Analytics (only once a Measurement ID
+  is set in config) and the optional
   same-origin `videos.json` (the page says so, so keep it true).
 - Best game score and theme choice live in the visitor's localStorage only.
 - Colors are the Prayer Windows theme tokens (`Theme.swift`), nudged only

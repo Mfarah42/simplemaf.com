@@ -16,4 +16,4 @@ Apps (all data stays on the user's device, none collect data):
 Links:
 - TikTok (all videos): https://www.tiktok.com/@simplemaf
 - Bluesky: https://bsky.app/profile/simplemaf.bsky.social
-- Site: https://simplemaf.com (one static file, no trackers)
+- Site: https://simplemaf.com (one static file)

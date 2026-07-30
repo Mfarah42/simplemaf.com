@@ -12,6 +12,14 @@ export const LINKS: Record<string, string> = {
   cadence: "https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175",
 };
 
+/** Google Analytics 4. Paste the Measurement ID from
+    Admin > Data Streams > your web stream (looks like G-XXXXXXXXXX).
+    While it is empty or still the placeholder, no analytics script loads and
+    the page makes no third-party requests at all. */
+export const ANALYTICS = {
+  measurementId: "G-YOUR_ID",
+};
+
 export interface ReceiptCell {
   label: string;
   value: string;

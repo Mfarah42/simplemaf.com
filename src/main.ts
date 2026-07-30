@@ -17,10 +17,12 @@ import { initGame } from "./features/game";
 import { initPalette } from "./features/palette";
 import { initReveal } from "./features/reveal";
 import { initShowcase } from "./features/showcase";
+import { initAnalytics } from "./features/analytics";
 
 // reveal styles only apply when JS runs, so a no-JS page stays fully visible
 document.documentElement.classList.add("js");
 
+initAnalytics();
 initLinks();
 initVideos();
 initStack();

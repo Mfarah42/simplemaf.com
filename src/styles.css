@@ -123,6 +123,12 @@
     padding: 8px 15px; border-radius: 11px;
   }
   .nav-cta:hover { color: var(--paper) !important; opacity: .88; }
+  .nav-contact {
+    font-weight: 600; color: var(--ink) !important;
+    border: 1px solid var(--hairline); border-radius: 11px; padding: 7px 13px;
+  }
+  .nav-contact:hover { border-color: var(--rust); color: var(--rust-deep) !important; }
+
   .theme-btn {
     display: grid; place-items: center;
     width: 32px; height: 32px; padding: 0; flex-shrink: 0;
@@ -677,12 +683,26 @@
   }
 
   /* ================= Contact ================= */
-  /* no card here: the section sits on the paper so the page doesn't end on
-     a card holding more cards */
-  .contact { padding: 8px 0 4px; text-align: center; }
-  /* contact now precedes the game: plain breathing room between them */
-  #collab { padding-bottom: 26px; }
-  #play { padding-top: 56px; }
+  /* A full-bleed warm band so the one section people need to find cannot be
+     scrolled past. No card: the band itself is the emphasis. */
+  .contact-band {
+    background: var(--well-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 74px 0 !important;
+    margin-bottom: 0;
+  }
+  .contact { text-align: center; padding: 0; }
+  .contact h2 { font-size: clamp(30px, 5vw, 44px); margin-top: 10px; }
+  .contact > p { color: var(--ink2); margin-top: 10px; font-size: 17px; }
+  .contact-btns { justify-content: center; margin-top: 30px; }
+  .btn-lg { padding: 16px 30px; font-size: 16.5px; border-radius: 17px; }
+  .contact-socials { justify-content: center; margin-top: 28px; }
+  .contact .social { background: var(--card); }
+
+  /* the game sits well below, quieter, as the last stop before the footer */
+  #play { padding-top: 92px; }
+  #play .section-head { opacity: .9; }
   .contact > p { color: var(--ink2); margin-top: 8px; }
   .contact-btns { justify-content: center; margin-top: 24px; }
   .contact-socials { justify-content: center; margin-top: 24px; }

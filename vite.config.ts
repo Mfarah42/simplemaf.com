@@ -11,12 +11,15 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 // CSP (spec drops frame-ancestors/sandbox/report-uri from meta delivery),
 // and GitHub Pages cannot send headers. Framing risk is accepted for a
 // stateless brochure page; main.ts carries a best-effort frame check.
+const GA_SCRIPT = "https://www.googletagmanager.com";
+const GA_CONNECT = "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
+
 const CSP = [
   "default-src 'none'",
-  "script-src 'unsafe-inline'",
+  `script-src 'unsafe-inline' ${GA_SCRIPT}`,
   "style-src 'unsafe-inline'",
-  "img-src 'self' data:",
-  "connect-src 'self'",
+  `img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com`,
+  `connect-src 'self' ${GA_CONNECT}`,
   "base-uri 'none'",
   "form-action 'none'",
 ].join("; ");
