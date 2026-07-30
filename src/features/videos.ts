@@ -109,18 +109,55 @@ export function normalizeVideo(v: unknown): Video | null {
   return out;
 }
 
+/** Read a body while enforcing a true byte cap, aborting the transfer the
+    moment it exceeds the limit instead of buffering it all first. */
+export async function readCapped(res: Response, maxBytes: number): Promise<string | null> {
+  const declared = Number(res.headers.get("content-length"));
+  if (declared && declared > maxBytes) return null;
+  if (!res.body) {
+    const text = await res.text();
+    return new TextEncoder().encode(text).byteLength > maxBytes ? null : text;
+  }
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let bytes = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    bytes += value.byteLength;
+    if (bytes > maxBytes) {
+      void reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  const all = new Uint8Array(bytes);
+  let off = 0;
+  for (const c of chunks) {
+    all.set(c, off);
+    off += c.byteLength;
+  }
+  return new TextDecoder().decode(all);
+}
+
 /**
  * videos.json beats the inline list when present, so a scheduled job can
  * refresh the feed without touching the page. Same-origin only; capped in
- * size and count; every row normalized; every URL scheme-checked.
- * Browsers block this fetch for a file:// open, which is fine.
+ * bytes with an aborting reader; every row normalized; every URL
+ * scheme-checked. Browsers block this fetch for a file:// open, which is fine.
  */
 export async function loadExternalVideos(): Promise<void> {
   try {
-    const res = await fetch("videos.json", { cache: "no-store" });
-    if (!res.ok) return;
-    const text = await res.text();
-    if (text.length > MAX_JSON_BYTES) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 10_000);
+    const res = await fetch("videos.json", { cache: "no-store", signal: ctrl.signal });
+    if (!res.ok) {
+      clearTimeout(timer);
+      return;
+    }
+    const text = await readCapped(res, MAX_JSON_BYTES);
+    clearTimeout(timer);
+    if (text === null) {
       console.warn("videos.json skipped: over size cap");
       return;
     }
