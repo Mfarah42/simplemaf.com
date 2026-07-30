@@ -41,8 +41,20 @@ export function initGame(): { start: () => void } {
   const bestEl = byId("best");
   const noteEl = byId("gameNote");
 
-  const W = canvas.width;
-  const H = canvas.height;
+  // The board sizes itself to its rendered width: wide and shallow on
+  // desktop, taller than wide on phones so the overlay content fits and
+  // there's actually room to play. Coordinates are CSS pixels.
+  let W = canvas.width;
+  let H = canvas.height;
+
+  function sizeBoard(): void {
+    const cssW = Math.round(canvas!.getBoundingClientRect().width);
+    if (cssW < 100) return; // hidden or not laid out yet: keep defaults
+    W = cssW;
+    H = cssW < 560 ? Math.round(cssW * 1.15) : Math.round(cssW * (470 / 900));
+    canvas!.width = W;
+    canvas!.height = H;
+  }
 
   let best = Number(storageGet("shipItBest")) || 0;
   if (!Number.isFinite(best) || best < 0 || best > 9999) best = 0;
@@ -71,7 +83,8 @@ export function initGame(): { start: () => void } {
     spawnAcc = 0;
     lastTs = null;
     pausedRemaining = null;
-    pad = { x: W / 2, w: 122, h: 26 };
+    // pad narrows on small boards so mobile isn't trivially easy
+    pad = { x: W / 2, w: Math.min(122, Math.round(W * 0.3)), h: 26 };
     scoreEl.textContent = "0";
     timeEl.textContent = String(ROUND);
   }
@@ -240,6 +253,17 @@ export function initGame(): { start: () => void } {
     draw();
   });
 
+  window.addEventListener("resize", () => {
+    if (running) return; // never yank the board mid-sprint
+    const before = W;
+    sizeBoard();
+    if (W !== before) {
+      reset();
+      draw();
+    }
+  });
+
+  sizeBoard();
   reset();
   draw(); // idle board so the section never looks broken before first play
   return { start };
