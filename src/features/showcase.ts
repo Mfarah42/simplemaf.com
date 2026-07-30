@@ -68,10 +68,15 @@ export function initShowcase(): void {
     }
     const src = flySrc.getBoundingClientRect();
     const box = slot.getBoundingClientRect();
+    const cap = captions?.getBoundingClientRect();
     const stacked = window.innerWidth <= 760;
-    const destSize = stacked ? 46 : 56;
-    const destLeft = stacked ? box.left - 10 : box.left - destSize - 26;
-    const destTop = stacked ? box.top - destSize - 12 : box.top + 10;
+    // Desktop: rest in the open space on the left, under the caption, rather
+    // than crowding the phone. Stacked: tuck just above the phone.
+    const destSize = stacked ? 46 : 68;
+    const destLeft = stacked ? box.left - 10 : (cap?.left ?? box.left - 240);
+    const destTop = stacked
+      ? box.top - destSize - 12
+      : Math.min((cap?.bottom ?? box.top) + 40, window.innerHeight - destSize - 40);
     const e = easeOut(t);
     const size = src.width + (destSize - src.width) * e;
 
