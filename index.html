@@ -85,7 +85,7 @@
 
 <!-- ================= EXPLAINERS ================= -->
 <section id="explainers" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">The Feed</span>
     <h2 class="serif">What I make videos about</h2>
     <p>AI news without the press-release language, whether new tech is worth the price, and what apps quietly do with your data. Tap a video for the numbers and sources that didn't fit in 45 seconds.</p>
@@ -98,12 +98,12 @@
 
 <!-- ================= APPS ================= -->
 <section id="apps" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">Shipped</span>
     <h2 class="serif">Apps I've published</h2>
     <p>All native SwiftUI. Everything runs on your phone and nothing phones home, so they work in airplane mode.</p>
   </div>
-  <div class="grid">
+  <div class="grid" data-reveal-group>
 
     <div class="card">
       <div class="card-top">
@@ -141,9 +141,66 @@
   </div>
 </section>
 
+<!-- ================= SHOWCASE ================= -->
+<section id="showcase" class="wrap">
+  <div class="section-head" data-reveal>
+    <span class="eyebrow">Showcase</span>
+    <h2 class="serif">Prayer Windows, in motion</h2>
+    <p>Keep scrolling. The app explains itself.</p>
+  </div>
+</section>
+<div id="showcase-scroll">
+  <div class="showcase-pin">
+    <div id="showcase-stage" class="wrap">
+      <div class="sc-captions">
+        <p class="sc-cap" data-scene="0"><b class="serif">Five prayers a day.</b> Each one is a window, not a deadline.</p>
+        <p class="sc-cap" data-scene="1"><b class="serif">Every window begins and ends.</b> Watch Asr close as the sun drops.</p>
+        <p class="sc-cap" data-scene="2"><b class="serif">Trusted methods disagree by minutes.</b> See them side by side, honestly.</p>
+        <p class="sc-cap" data-scene="3"><b class="serif">A nudge before the window closes.</b> That's the whole point.<br><a class="applink" data-social="prayerwindows" href="#">In review on the App&nbsp;Store →</a></p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="pw-sun"></div>
+          <div class="pw-notif">
+            <img src="assets/prayerwindows.png" alt="" width="26" height="26">
+            <div><b>Asr ends in 30 min</b><span>The window closes at 8:21</span></div>
+          </div>
+          <div class="pw-header">
+            <span class="pw-eyebrow">TUESDAY · RAJAB 14</span>
+            <b class="serif">Prayer Windows</b>
+          </div>
+          <div class="pw-rows">
+            <div class="pw-row" style="--i:0"><span>Fajr</span><b class="serif pw-fajr-time">4:42</b></div>
+            <div class="pw-row" style="--i:1"><span>Dhuhr</span><b class="serif">1:12</b></div>
+            <div class="pw-row pw-asr" style="--i:2">
+              <div class="pw-asr-top"><span>Asr</span><b class="serif">4:58</b></div>
+              <div class="pw-window">
+                <div class="pw-window-fill"></div>
+                <span class="pw-window-a">begins 4:58</span>
+                <span class="pw-window-b">ends 8:21</span>
+              </div>
+            </div>
+            <div class="pw-row" style="--i:3"><span>Maghrib</span><b class="serif">8:21</b></div>
+            <div class="pw-row" style="--i:4"><span>Isha</span><b class="serif">9:46</b></div>
+          </div>
+          <div class="pw-methods">
+            <span class="pw-eyebrow">FAJR BY METHOD</span>
+            <div class="pw-chips">
+              <span class="pw-chip" style="--i:0">ISNA <b class="serif">4:42</b></span>
+              <span class="pw-chip" style="--i:1">MWL <b class="serif">4:28</b></span>
+              <span class="pw-chip" style="--i:2">Umm al-Qura <b class="serif">4:35</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ================= NOW ================= -->
 <section id="now" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">Now</span>
     <h2 class="serif">What I'm working on</h2>
   </div>
@@ -157,7 +214,7 @@
 
 <!-- ================= CALCULATOR ================= -->
 <section id="math" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">Do It Yourself</span>
     <h2 class="serif">Run the math: lease vs. buy</h2>
     <p>Every pricing video gets the same comment: “but what about my situation?” Fair. Here's the arithmetic with your numbers instead of mine. It all runs in your browser and nothing is sent anywhere.</p>
@@ -237,17 +294,17 @@
 
 <!-- ================= STACK ================= -->
 <section id="stack" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">Uses</span>
     <h2 class="serif">The stack</h2>
     <p>The most-asked question under every video, answered once. No affiliate links. If it's here, I use it.</p>
   </div>
-  <div class="stack-grid" id="stackGrid"></div>
+  <div class="stack-grid" data-reveal-group id="stackGrid"></div>
 </section>
 
 <!-- ================= GAME ================= -->
 <section id="play" class="wrap">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <span class="eyebrow">Intermission</span>
     <h2 class="serif">Ship It</h2>
     <p>Thirty seconds of my job: catch the features, dodge the bugs. Drag anywhere on the board, or use the ← → keys.</p>

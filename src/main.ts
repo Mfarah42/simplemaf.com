@@ -16,6 +16,11 @@ import { initCalculator } from "./features/calculator";
 import { initTheme } from "./features/theme";
 import { initGame } from "./features/game";
 import { initPalette } from "./features/palette";
+import { initReveal } from "./features/reveal";
+import { initShowcase } from "./features/showcase";
+
+// reveal styles only apply when JS runs, so a no-JS page stays fully visible
+document.documentElement.classList.add("js");
 
 initLinks();
 initVideos();
@@ -24,6 +29,8 @@ initCalculator();
 const theme = initTheme();
 const game = initGame();
 initPalette({ cycleTheme: theme.cycle, startGame: game.start });
+initReveal();
+initShowcase();
 
 // A quiet hello for whoever opens devtools. You know who you are.
 console.log(
