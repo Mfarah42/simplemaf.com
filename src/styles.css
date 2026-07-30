@@ -398,6 +398,7 @@
     font-size: 9.5px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink3);
   }
+  .foot-note { color: var(--ink3); }
   footer {
     border-top: 1px solid var(--hairline); padding: 34px 0 46px;
     display: flex; justify-content: space-between; align-items: center;
