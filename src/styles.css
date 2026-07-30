@@ -680,6 +680,9 @@
   /* no card here: the section sits on the paper so the page doesn't end on
      a card holding more cards */
   .contact { padding: 8px 0 4px; text-align: center; }
+  /* contact now precedes the game: plain breathing room between them */
+  #collab { padding-bottom: 26px; }
+  #play { padding-top: 56px; }
   .contact > p { color: var(--ink2); margin-top: 8px; }
   .contact-btns { justify-content: center; margin-top: 24px; }
   .contact-socials { justify-content: center; margin-top: 24px; }

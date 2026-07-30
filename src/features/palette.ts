@@ -20,8 +20,8 @@ export function initPalette(deps: { cycleTheme: () => void; startGame: () => voi
   const commands: Command[] = [
     { label: "Go to explainers", hint: "videos", run: jump("#explainers") },
     { label: "Go to apps", hint: "Stockd · Prayer Windows · Cadence", run: jump("#apps") },
-    { label: "Get in touch", hint: "collabs and requests", run: jump("#collab") },
     { label: "Go to stack", hint: "/uses", run: jump("#stack") },
+    { label: "Get in touch", hint: "collabs and requests", run: jump("#collab") },
     { label: "Toggle theme", hint: "auto → light → dark", run: deps.cycleTheme },
     {
       label: "Play Ship It",
