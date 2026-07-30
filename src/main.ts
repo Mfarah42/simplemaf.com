@@ -27,6 +27,12 @@ initStack();
 const theme = initTheme();
 const game = initGame();
 initPalette({ cycleTheme: theme.cycle, startGame: game.start });
+// the wordmark returns to the very top, not just to the hero anchor
+document.querySelector(".nav-name")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 initReveal();
 initShowcase();
 

@@ -33,10 +33,38 @@ export function countdownAt(p: number): string {
   return `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
 }
 
+const PHONE_W = 290;
+const PHONE_H = 590;
+
+/** Largest scale at which the fixed-size phone fits the space available. */
+export function phoneScale(slotWidth: number, availableHeight: number): number {
+  const byWidth = slotWidth / PHONE_W;
+  const byHeight = availableHeight / PHONE_H;
+  return Math.max(0.4, Math.min(1, byWidth, byHeight));
+}
+
 export function initShowcase(): void {
   const region = document.getElementById("showcase-scroll");
   const stage = document.getElementById("showcase-stage");
   if (!region || !stage) return;
+
+  const slot = stage.querySelector<HTMLElement>(".phone-slot");
+  const captions = stage.querySelector<HTMLElement>(".sc-captions");
+
+  function fitPhone(): void {
+    if (!slot) return;
+    const stacked = window.innerWidth <= 760;
+    // stacked: caption sits above the phone, so it eats from the height budget
+    const capH = stacked && captions ? captions.getBoundingClientRect().height + 34 : 0;
+    const avail = window.innerHeight - capH - (stacked ? 40 : 60);
+    const room = stacked
+      ? Math.min(window.innerWidth - 48, 420)
+      : stage!.getBoundingClientRect().width * 0.46;
+    stage!.style.setProperty("--phone-scale", phoneScale(room, avail).toFixed(4));
+  }
+
+  fitPhone();
+  window.addEventListener("resize", fitPhone, { passive: true });
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     stage.classList.add("static", "scene-3");

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SCENES, countdownAt, iconProgress, sceneAt, sunPos } from "../src/features/showcase";
+import { SCENES, countdownAt, iconProgress, phoneScale, sceneAt, sunPos } from "../src/features/showcase";
 
 describe("sceneAt", () => {
   it("splits progress into equal scenes", () => {
@@ -67,5 +67,27 @@ describe("sunPos", () => {
   it("clamps input", () => {
     expect(sunPos(-2).x).toBe(0);
     expect(sunPos(2).x).toBe(1);
+  });
+});
+
+describe("phoneScale", () => {
+  it("never upscales past the design size", () => {
+    expect(phoneScale(900, 2000)).toBe(1);
+  });
+
+  it("fits by width when width is the constraint", () => {
+    expect(phoneScale(232, 2000)).toBeCloseTo(0.8);
+  });
+
+  it("fits by height when height is the constraint", () => {
+    expect(phoneScale(900, 295)).toBeCloseTo(0.5);
+  });
+
+  it("takes the smaller of the two constraints", () => {
+    expect(phoneScale(232, 295)).toBeCloseTo(0.5);
+  });
+
+  it("has a sane floor so it never collapses", () => {
+    expect(phoneScale(10, 10)).toBe(0.4);
   });
 });
