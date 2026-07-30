@@ -61,6 +61,8 @@ export function initGame(): { start: () => void } {
   bestEl.textContent = String(best);
 
   let running = false;
+  let attract = false;          // idle demo so the section reads as a game
+  let attractRaf = 0;
   let score = 0;
   let timeLeft = ROUND;
   let pad = { x: W / 2, w: 122, h: 14 };
@@ -105,6 +107,7 @@ export function initGame(): { start: () => void } {
   function draw(): void {
     if (!ctx) return;
     ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = attract ? 0.55 : 1;
     const padY = H - 48;
 
     ctx.textAlign = "center";
@@ -120,6 +123,57 @@ export function initGame(): { start: () => void } {
     ctx.fillStyle = cssVar("--paper");
     ctx.font = '700 11px ui-monospace, "SF Mono", Menlo, monospace';
     ctx.fillText("SHIP", pad.x, padY + pad.h / 2 + 1);
+    ctx.globalAlpha = 1;
+  }
+
+  /** Idle demo: pieces fall and the paddle drifts to catch them, so scrolling
+      to this section makes it obvious there is a game here. No score, no
+      input, and it yields the moment a real round starts. */
+  function attractFrame(ts: number): void {
+    if (!attract) return;
+    if (lastTs === null) lastTs = ts;
+    const dt = Math.min(ts - lastTs, 60);
+    lastTs = ts;
+
+    spawnAcc += dt;
+    if (spawnAcc >= 900) {
+      spawnAcc = 0;
+      spawn();
+    }
+
+    const step = dt / 16.7;
+    const padY = H - 48;
+    // the paddle eases toward the lowest good piece, so it looks played
+    const target = items
+      .filter((it) => !it.bad && it.y < padY)
+      .sort((a, b) => b.y - a.y)[0];
+    if (target) pad.x += (target.x - pad.x) * 0.045 * step;
+    pad.x = Math.max(pad.w / 2, Math.min(W - pad.w / 2, pad.x));
+
+    for (let i = items.length - 1; i >= 0; i--) {
+      const it = items[i] as FallingItem;
+      it.y += it.v * 0.62 * step;
+      it.phase += 0.04 * step;
+      if (it.y > H + 40) items.splice(i, 1);
+    }
+
+    draw();
+    attractRaf = requestAnimationFrame(attractFrame);
+  }
+
+  function startAttract(): void {
+    if (running || attract) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    attract = true;
+    items = [];
+    spawnAcc = 700;
+    lastTs = null;
+    attractRaf = requestAnimationFrame(attractFrame);
+  }
+
+  function stopAttract(): void {
+    attract = false;
+    cancelAnimationFrame(attractRaf);
   }
 
   function frame(ts: number): void {
@@ -183,6 +237,7 @@ export function initGame(): { start: () => void } {
   }
 
   function start(): void {
+    stopAttract();
     reset();
     legend.style.display = "";
     overlay.hidden = true;
@@ -266,6 +321,26 @@ export function initGame(): { start: () => void } {
   });
 
   sizeBoard();
+  // run the demo only while the section is on screen
+  if (typeof window.IntersectionObserver === "function") {
+    const section = document.getElementById("play");
+    if (section) {
+      new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting && !running) startAttract();
+            else if (!e.isIntersecting) stopAttract();
+          }
+        },
+        { threshold: 0.25 },
+      ).observe(section);
+    }
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopAttract();
+  });
+
   reset();
   draw(); // idle board so the section never looks broken before first play
   return { start };
