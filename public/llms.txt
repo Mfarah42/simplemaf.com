@@ -1,0 +1,19 @@
+# SimpleMAF
+
+> Mohamed (@simplemaf on TikTok) explains AI, consumer tech, and money in
+> short videos, and ships private iOS apps. This site is his home page.
+
+Topics covered in videos: AI model news and concepts explained plainly
+(distillation, on-device AI), consumer tech pricing and value (iPhone leasing
+vs buying, folding phone prices), and the privacy fine print of financial
+products (cash-back cards, banking apps).
+
+Apps (all data stays on the user's device, none collect data):
+- Stockd, smart grocery lists: https://apps.apple.com/us/app/stockd-smart-grocery-lists/id6761667432
+- Cadence, shift calendar for rotation work: https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175
+- Prayer Windows, honest prayer times: https://apps.apple.com/us/app/prayer-windows/id6793598476
+
+Links:
+- TikTok (all videos): https://www.tiktok.com/@simplemaf
+- Bluesky: https://bsky.app/profile/simplemaf.bsky.social
+- Site: https://simplemaf.com (one static file, no trackers)

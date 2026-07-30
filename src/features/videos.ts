@@ -133,8 +133,12 @@ export async function loadExternalVideos(): Promise<void> {
         .map(normalizeVideo)
         .filter((v): v is Video => v !== null)
         .slice(0, MAX_VIDEOS);
-      if (fresh.length) renderVideos(fresh);
-      else console.warn("videos.json skipped: no valid rows");
+      if (fresh.length) {
+        renderVideos(fresh);
+        injectVideoJsonLd(fresh);
+      } else {
+        console.warn("videos.json skipped: no valid rows");
+      }
     }
   } catch (e) {
     // file:// origin or no videos.json: expected, stay quiet is wrong only
@@ -143,7 +147,38 @@ export async function loadExternalVideos(): Promise<void> {
   }
 }
 
+/**
+ * Structured data so search engines see each explainer as a distinct work.
+ * Uses the direct video url when a row has one; the TikTok profile otherwise.
+ * Rebuilt whenever the list renders (including a videos.json refresh).
+ */
+export function injectVideoJsonLd(videos: Video[]): void {
+  const profile = resolved("tiktok") ?? "https://www.tiktok.com/@simplemaf";
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "SimpleMAF explainers",
+    itemListElement: videos.map((v, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "VideoObject",
+        name: v.title,
+        url: safeUrl(v.url) ?? profile,
+        creator: { "@type": "Person", name: "Mohamed", alternateName: "SimpleMAF" },
+      },
+    })),
+  };
+  document.getElementById("videosJsonLd")?.remove();
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.id = "videosJsonLd";
+  s.textContent = JSON.stringify(data);
+  document.head.appendChild(s);
+}
+
 export function initVideos(): void {
   renderVideos(VIDEOS);
+  injectVideoJsonLd(VIDEOS);
   void loadExternalVideos();
 }

@@ -67,54 +67,20 @@ export const VIDEOS: Video[] = [
 ];
 
 
-export interface StackItem {
+export interface GearItem {
+  emoji: string;
   name: string;
   note: string;
 }
 
-export interface StackGroup {
-  group: string;
-  items: StackItem[];
-}
-
-/** Gear list. Swap in whatever you actually use. */
-export const STACK: StackGroup[] = [
-  {
-    group: "Build",
-    items: [
-      { name: "Xcode + SwiftUI", note: "Every screen in all three apps. UIKit only when SwiftUI genuinely can't." },
-      { name: "Claude Code, in the terminal", note: "Scaffolding, refactors, and explaining code I wrote eight months ago." },
-      { name: "Apple Foundation Models", note: "The on-device model behind Stockd's list builder. Free, private, occasionally confident and wrong." },
-      { name: "Simulator + one real iPhone", note: "Simulator for speed; device for anything touching widgets, notifications, or battery." },
-      { name: "Swift Testing", note: "Prayer times get a golden test matrix. That one is non-negotiable." },
-    ],
-  },
-  {
-    group: "Film & edit",
-    items: [
-      { name: "iPhone 16 Pro Max", note: "My phone, my main test device, and my only camera. It's enough." },
-      { name: "Screen recordings, not camera", note: "Most “here's the app” footage is a capture from the device or Simulator." },
-      { name: "A clip-on lav mic", note: "The phone mic is fine until the room isn't. Audio is the whole video." },
-      { name: "Burned-in captions", note: "Most people watch muted. If it isn't on screen, it wasn't said." },
-      { name: "Apple Notes for scripts", note: "One page per video, read aloud once. Cuts the retakes in half." },
-    ],
-  },
-  {
-    group: "Research",
-    items: [
-      { name: "Primary sources first", note: "Pricing pages, model cards, filings. Screenshot it with the date visible." },
-      { name: "A running claims file", note: "Every number in a video links back to where I found it." },
-      { name: "The actual product", note: "Pricing videos get better once you've reached the real checkout screen." },
-      { name: "Safari Reader", note: "Strips the popups off the twelve tabs one explainer costs me." },
-    ],
-  },
-  {
-    group: "Daily driver",
-    items: [
-      { name: "Apple silicon Mac", note: "Builds, edits, and forty Safari tabs of Apple documentation." },
-      { name: "iOS beta on my main phone", note: "A bad idea I keep having, and the reason I catch things early." },
-      { name: "My own apps, daily", note: "Prayer Windows and Stockd are on my home screen. Best QA there is." },
-      { name: "Time Machine to a local drive", note: "Unglamorous, offline, and the only backup story I actually trust." },
-    ],
-  },
+/** The gear, for real. No affiliate links. */
+export const STACK: GearItem[] = [
+  { emoji: "💻", name: "M2 MacBook Pro", note: "Builds, edits, and forty Safari tabs of Apple docs." },
+  { emoji: "📱", name: "iPhone 16 Pro Max", note: "Main phone, test device, and the TikTok camera." },
+  { emoji: "🎙️", name: "DJI Mic Mini", note: "Clips on. Good audio is the whole video." },
+  { emoji: "📷", name: "Sony a7 IV + 24-70mm GM II", note: "The photography rig." },
+  { emoji: "🎞️", name: "Fujifilm X-E4", note: "The carry-everywhere camera." },
+  { emoji: "🛠️", name: "Xcode + SwiftUI", note: "Every app on this page. Native or nothing." },
+  { emoji: "🤖", name: "Claude Code", note: "Pair programmer in the terminal. Most build videos are this." },
+  { emoji: "🧠", name: "Apple Foundation Models", note: "Stockd's on-device AI. No server, no API key." },
 ];
