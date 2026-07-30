@@ -35,7 +35,6 @@
     <div class="nav-links">
       <a href="#explainers" class="collapse">Explainers</a>
       <a href="#apps" class="collapse-sm">Apps</a>
-      <a href="#math" class="collapse">Run&nbsp;the&nbsp;math</a>
       <a href="#stack" class="collapse">Stack</a>
       <a href="#play" class="collapse">Game</a>
       <a href="#collab">Get&nbsp;in&nbsp;touch</a>
@@ -47,7 +46,7 @@
 
 <header class="wrap" id="top">
   <span class="eyebrow">Tech · Money · Bay Area</span>
-  <h1 class="serif">I explain tech and money. I also <em>ship</em> it.</h1>
+  <h1 class="serif">I explain tech and <em>money</em>.</h1>
   <p class="lede">I'm Mohamed, the guy behind <strong>@simplemaf</strong>. I make short videos that keep AI, new tech, and money <strong>simple</strong>. And iOS apps, on the side.</p>
   <div class="btn-row">
     <a class="btn btn-clay" data-social="tiktok" href="#">Watch on TikTok</a>
@@ -74,15 +73,6 @@
   </div>
 </header>
 
-<div class="wrap">
-  <div class="stats" data-reveal-group>
-    <div class="stat"><b class="serif">3</b><span>apps shipped to the App&nbsp;Store</span></div>
-    <div class="stat"><b class="serif">100%</b><span>on-device, always</span></div>
-    <div class="stat"><b class="serif">0</b><span>trackers, ever</span></div>
-    <div class="stat"><b class="serif">1</b><span>guy, one terminal</span></div>
-  </div>
-</div>
-
 <!-- ================= EXPLAINERS ================= -->
 <section id="explainers" class="wrap">
   <div class="section-head" data-reveal>
@@ -103,7 +93,7 @@
     <h2 class="serif">Apps I've published</h2>
     <p>All native SwiftUI. Everything runs on your phone and nothing phones home, so they work in airplane mode.</p>
   </div>
-  <div class="grid" data-reveal-group>
+  <div class="grid apps-grid" data-reveal-group>
 
     <div class="card">
       <div class="card-top">
@@ -158,6 +148,7 @@
         <p class="sc-cap" data-scene="2"><b class="serif">Trusted methods disagree by minutes.</b> The sun path shows every one, honestly.</p>
         <p class="sc-cap" data-scene="3"><b class="serif">A nudge before the window closes.</b> That's the whole point.<br><a class="applink" data-social="prayerwindows" href="#">In review on the App&nbsp;Store →</a></p>
       </div>
+      <img class="sc-flyicon" src="assets/prayerwindows.png" alt="" width="72" height="72" aria-hidden="true">
       <div class="phone" aria-hidden="true">
         <div class="phone-notch"></div>
         <div class="phone-screen">
@@ -285,86 +276,6 @@
 </section>
 
 
-<!-- ================= CALCULATOR ================= -->
-<section id="math" class="wrap">
-  <div class="section-head" data-reveal>
-    <span class="eyebrow">Do It Yourself</span>
-    <h2 class="serif">Run the math: lease vs. buy</h2>
-    <p>Every pricing video gets the same comment: “but what about my situation?” Fair. Here's the arithmetic with your numbers instead of mine. It all runs in your browser and nothing is sent anywhere.</p>
-  </div>
-  <div class="calc" data-reveal-group>
-    <div class="panel calc-fields">
-      <div class="field">
-        <label for="cPrice">Sticker price if you just buy it<span class="hint">What it costs outright, before tax.</span></label>
-        <div class="field-in"><span class="pre">$</span><input type="number" id="cPrice" value="1199" min="0" step="10" inputmode="decimal"></div>
-      </div>
-      <div class="field">
-        <label for="cMonthly">Monthly payment on the lease or plan<span class="hint">The number in the ad.</span></label>
-        <div class="field-in"><span class="pre">$</span><input type="number" id="cMonthly" value="54" min="0" step="1" inputmode="decimal"></div>
-      </div>
-      <div class="field">
-        <label for="cMonths">How long you'll keep it<span class="hint">Months. Be honest with yourself.</span></label>
-        <div class="field-in"><input type="number" id="cMonths" value="24" min="1" step="1" inputmode="numeric"></div>
-      </div>
-      <div class="field">
-        <label for="cResale">What it's worth when you're done<span class="hint">Resale or trade-in, if you own it. Zero if you hand it back.</span></label>
-        <div class="field-in"><span class="pre">$</span><input type="number" id="cResale" value="450" min="0" step="10" inputmode="decimal"></div>
-      </div>
-      <div class="field">
-        <label for="cUpfront">Anything due up front on the plan<span class="hint">Down payment, activation, first month.</span></label>
-        <div class="field-in"><span class="pre">$</span><input type="number" id="cUpfront" value="0" min="0" step="10" inputmode="decimal"></div>
-      </div>
-    </div>
-
-    <div class="calc-out" aria-live="polite">
-      <div class="calc-row">
-        <span class="lab"><b>Lease / monthly plan</b>You pay every month and own nothing at the end.</span>
-        <span class="val" id="oLease">—</span>
-      </div>
-      <div class="calc-row">
-        <span class="lab"><b>Buy outright</b>Price now, minus what you sell it for later.</span>
-        <span class="val" id="oBuy">—</span>
-      </div>
-      <div class="calc-row">
-        <span class="lab"><b>Real cost per month</b>Lease vs. buy, side by side.</span>
-        <span class="val" id="oPer">—</span>
-      </div>
-      <p class="verdict" id="oVerdict">—</p>
-      <p class="stamp">This is arithmetic on the numbers you typed, not financial advice. It ignores tax, interest, insurance, and the upgrade itch. Check the actual contract.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= MANIFESTO + SPEC TABLE ================= -->
-<section class="wrap">
-  <div class="manifesto" data-reveal>
-    <span class="eyebrow">The Promise</span>
-    <h2 class="serif">No ads. No accounts. No tracking. Ever.</h2>
-    <p>I spend a lot of airtime explaining how companies make money off your data. It would be strange to turn around and do the same thing. So here's the claim as a spec sheet you can check, app by app.</p>
-    <div class="table-scroll">
-      <table>
-        <caption class="mono" style="caption-side:bottom;text-align:left;font-size:12px;color:var(--ink3);padding-top:12px">Verifiable against each app's App Store privacy label.</caption>
-        <thead>
-          <tr>
-            <th scope="col">Claim</th>
-            <th scope="col"><img src="assets/stockd.png" alt="" width="26" height="26">Stockd</th>
-            <th scope="col"><img src="assets/prayerwindows.png" alt="" width="26" height="26">Prayer&nbsp;Windows</th>
-            <th scope="col"><img src="assets/cadence.png" alt="" width="26" height="26">Cadence</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>No ads</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>No account required</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>No analytics or trackers</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Works in airplane mode</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>On-device AI</td><td class="yes">✓</td><td class="no"></td><td class="no"></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-foot">The blank cells are on purpose. Not every app needs a language model, and bolting one on just to say so is the kind of thing I make videos complaining about.</p>
-  </div>
-</section>
-
 <!-- ================= STACK ================= -->
 <section id="stack" class="wrap">
   <div class="section-head" data-reveal>
@@ -377,10 +288,10 @@
 
 <!-- ================= GAME ================= -->
 <section id="play" class="wrap">
-  <div class="section-head" data-reveal>
-    <span class="eyebrow">Intermission</span>
-    <h2 class="serif">Ship It</h2>
-    <p>Thirty seconds of my job: catch the features, dodge the bugs. Drag anywhere on the board, or use the ← → keys.</p>
+  <div class="section-head" id="playHead" data-reveal>
+    <span class="eyebrow">Play it</span>
+    <h2 class="serif">Ship It <span class="game-badge">Mini game</span></h2>
+    <p>A 30-second arcade game. Catch the features, dodge the bugs. Drag anywhere on the board, or use the ← → keys.</p>
   </div>
   <div class="game-shell" data-reveal>
     <div class="game-hud">

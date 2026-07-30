@@ -63,7 +63,7 @@ export function initGame(): { start: () => void } {
   let running = false;
   let score = 0;
   let timeLeft = ROUND;
-  let pad = { x: W / 2, w: 122, h: 26 };
+  let pad = { x: W / 2, w: 122, h: 14 };
   let items: FallingItem[] = [];
   let spawnAcc = 0;
   let lastTs: number | null = null;
@@ -84,7 +84,7 @@ export function initGame(): { start: () => void } {
     lastTs = null;
     pausedRemaining = null;
     // pad narrows on small boards so mobile isn't trivially easy
-    pad = { x: W / 2, w: Math.min(122, Math.round(W * 0.3)), h: 26 };
+    pad = { x: W / 2, w: Math.min(122, Math.round(W * 0.3)), h: 14 };
     scoreEl.textContent = "0";
     timeEl.textContent = String(ROUND);
   }
@@ -112,13 +112,13 @@ export function initGame(): { start: () => void } {
     ctx.font = '34px system-ui, "Apple Color Emoji", sans-serif';
     for (const it of items) ctx.fillText(it.emoji, it.x + Math.sin(it.phase) * 7, it.y);
 
-    ctx.fillStyle = cssVar("--rust-fill");
+    ctx.fillStyle = cssVar("--rust");
     ctx.beginPath();
-    ctx.roundRect(pad.x - pad.w / 2, padY, pad.w, pad.h, 10);
+    ctx.roundRect(pad.x - pad.w / 2, padY, pad.w, pad.h, 999);
     ctx.fill();
 
-    ctx.fillStyle = cssVar("--on-rust");
-    ctx.font = '600 13px ui-monospace, "SF Mono", Menlo, monospace';
+    ctx.fillStyle = cssVar("--paper");
+    ctx.font = '700 11px ui-monospace, "SF Mono", Menlo, monospace';
     ctx.fillText("SHIP", pad.x, padY + pad.h / 2 + 1);
   }
 
@@ -166,6 +166,7 @@ export function initGame(): { start: () => void } {
 
   function end(): void {
     running = false;
+    document.body.classList.remove("playing");
     cancelAnimationFrame(raf);
     const isBest = score > best;
     if (isBest) {
@@ -186,6 +187,7 @@ export function initGame(): { start: () => void } {
     legend.style.display = "";
     overlay.hidden = true;
     running = true;
+    document.body.classList.add("playing");
     roundEndsAt = performance.now() + ROUND * 1000;
     raf = requestAnimationFrame(frame);
   }

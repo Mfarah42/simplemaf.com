@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SCENES, countdownAt, sceneAt, sunPos } from "../src/features/showcase";
+import { SCENES, countdownAt, iconProgress, sceneAt, sunPos } from "../src/features/showcase";
 
 describe("sceneAt", () => {
   it("splits progress into equal scenes", () => {
@@ -39,6 +39,20 @@ describe("countdownAt", () => {
     const toSecs = (s: string) => Number(s.split(":")[0]) * 60 + Number(s.split(":")[1]);
     expect(toSecs(countdownAt(0.3))).toBeGreaterThan(toSecs(countdownAt(0.6)));
     expect(toSecs(countdownAt(0.6))).toBeGreaterThan(toSecs(countdownAt(0.9)));
+  });
+});
+
+describe("iconProgress", () => {
+  it("flies in over the first fifth then holds", () => {
+    expect(iconProgress(0)).toBe(0);
+    expect(iconProgress(0.1)).toBeCloseTo(0.5);
+    expect(iconProgress(0.2)).toBe(1);
+    expect(iconProgress(0.9)).toBe(1);
+  });
+
+  it("clamps out-of-range input", () => {
+    expect(iconProgress(-1)).toBe(0);
+    expect(iconProgress(5)).toBe(1);
   });
 });
 

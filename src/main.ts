@@ -12,7 +12,6 @@ if (window.top !== window.self) {
 import { initLinks } from "./features/links";
 import { initVideos } from "./features/videos";
 import { initStack } from "./features/stack";
-import { initCalculator } from "./features/calculator";
 import { initTheme } from "./features/theme";
 import { initGame } from "./features/game";
 import { initPalette } from "./features/palette";
@@ -25,7 +24,6 @@ document.documentElement.classList.add("js");
 initLinks();
 initVideos();
 initStack();
-initCalculator();
 const theme = initTheme();
 const game = initGame();
 initPalette({ cycleTheme: theme.cycle, startGame: game.start });

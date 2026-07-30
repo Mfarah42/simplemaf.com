@@ -18,6 +18,11 @@ export function sunPos(p: number): { x: number; y: number } {
   return { x: t, y: 4 * (t - 0.5) * (t - 0.5) }; // 1 at edges, 0 at noon
 }
 
+/** The app icon flies in over the first fifth of the scroll, then sits put. */
+export function iconProgress(p: number): number {
+  return Math.min(1, Math.max(0, p / 0.2));
+}
+
 /** The Maghrib countdown scrubs from 30:48 down to 5:12 across scenes 1-3. */
 export function countdownAt(p: number): string {
   const FULL = 30 * 60 + 48;
@@ -60,6 +65,8 @@ export function initShowcase(): void {
     // the window-fill bar scrubs through scene 1 and stays full after
     const fill = scene > 1 ? 1 : scene === 1 ? sp : 0;
     stage!.style.setProperty("--fill", (0.55 + fill * 0.4).toFixed(4));
+
+    stage!.style.setProperty("--icon-p", iconProgress(p).toFixed(4));
 
     const count = document.getElementById("pwCountdown");
     if (count) count.textContent = countdownAt(p);
