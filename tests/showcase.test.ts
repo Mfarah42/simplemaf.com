@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SCENES, countdownAt, iconProgress, phoneScale, sceneAt, sunPos } from "../src/features/showcase";
+import { SCENES, countdownAt, flyProgress, phoneScale, sceneAt, sunPos } from "../src/features/showcase";
 
 describe("sceneAt", () => {
   it("splits progress into equal scenes", () => {
@@ -42,17 +42,24 @@ describe("countdownAt", () => {
   });
 });
 
-describe("iconProgress", () => {
-  it("flies in over the first fifth then holds", () => {
-    expect(iconProgress(0)).toBe(0);
-    expect(iconProgress(0.1)).toBeCloseTo(0.5);
-    expect(iconProgress(0.2)).toBe(1);
-    expect(iconProgress(0.9)).toBe(1);
+describe("flyProgress", () => {
+  it("is 0 while the showcase is still a viewport away", () => {
+    expect(flyProgress(900, 800)).toBe(0);
+    expect(flyProgress(800, 800)).toBe(0);
   });
 
-  it("clamps out-of-range input", () => {
-    expect(iconProgress(-1)).toBe(0);
-    expect(iconProgress(5)).toBe(1);
+  it("reaches 1 once the section pins", () => {
+    expect(flyProgress(0, 800)).toBe(1);
+    expect(flyProgress(-400, 800)).toBe(1);
+  });
+
+  it("interpolates across the approach", () => {
+    expect(flyProgress(400, 800)).toBeCloseTo(0.5);
+    expect(flyProgress(200, 800)).toBeCloseTo(0.75);
+  });
+
+  it("is safe with a zero viewport", () => {
+    expect(flyProgress(100, 0)).toBe(0);
   });
 });
 
@@ -80,11 +87,11 @@ describe("phoneScale", () => {
   });
 
   it("fits by height when height is the constraint", () => {
-    expect(phoneScale(900, 295)).toBeCloseTo(0.5);
+    expect(phoneScale(900, 344)).toBeCloseTo(0.5);
   });
 
   it("takes the smaller of the two constraints", () => {
-    expect(phoneScale(232, 295)).toBeCloseTo(0.5);
+    expect(phoneScale(232, 344)).toBeCloseTo(0.5);
   });
 
   it("has a sane floor so it never collapses", () => {

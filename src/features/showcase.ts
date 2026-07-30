@@ -18,11 +18,6 @@ export function sunPos(p: number): { x: number; y: number } {
   return { x: t, y: 4 * (t - 0.5) * (t - 0.5) }; // 1 at edges, 0 at noon
 }
 
-/** The app icon flies in over the first fifth of the scroll, then sits put. */
-export function iconProgress(p: number): number {
-  return Math.min(1, Math.max(0, p / 0.2));
-}
-
 /** The Maghrib countdown scrubs from 30:48 down to 5:12 across scenes 1-3. */
 export function countdownAt(p: number): string {
   const FULL = 30 * 60 + 48;
@@ -34,7 +29,16 @@ export function countdownAt(p: number): string {
 }
 
 const PHONE_W = 290;
-const PHONE_H = 590;
+const PHONE_H = 688;
+
+/** 0 while the showcase is still a viewport away, 1 once it pins. Drives the
+    app icon's journey from its card down to the phone. */
+export function flyProgress(regionTop: number, viewportH: number): number {
+  if (viewportH <= 0) return 0;
+  return Math.min(1, Math.max(0, 1 - regionTop / viewportH));
+}
+
+const easeOut = (t: number): number => 1 - Math.pow(1 - t, 3);
 
 /** Largest scale at which the fixed-size phone fits the space available. */
 export function phoneScale(slotWidth: number, availableHeight: number): number {
@@ -50,6 +54,36 @@ export function initShowcase(): void {
 
   const slot = stage.querySelector<HTMLElement>(".phone-slot");
   const captions = stage.querySelector<HTMLElement>(".sc-captions");
+  const fly = stage.querySelector<HTMLElement>(".sc-flyicon");
+  const flySrc = document.querySelector<HTMLElement>("[data-flysrc]");
+
+  /** The icon hands off from the app card and travels to the phone. */
+  function updateFly(): void {
+    if (!fly || !flySrc || !slot) return;
+    const t = flyProgress(region!.getBoundingClientRect().top, window.innerHeight);
+    if (t <= 0) {
+      fly.style.opacity = "0";
+      flySrc.style.opacity = "1";
+      return;
+    }
+    const src = flySrc.getBoundingClientRect();
+    const box = slot.getBoundingClientRect();
+    const stacked = window.innerWidth <= 760;
+    const destSize = stacked ? 46 : 56;
+    const destLeft = stacked ? box.left - 10 : box.left - destSize - 26;
+    const destTop = stacked ? box.top - destSize - 12 : box.top + 10;
+    const e = easeOut(t);
+    const size = src.width + (destSize - src.width) * e;
+
+    fly.style.width = `${size}px`;
+    fly.style.height = `${size}px`;
+    fly.style.left = `${src.left + (destLeft - src.left) * e}px`;
+    fly.style.top = `${src.top + (destTop - src.top) * e}px`;
+    fly.style.transform = `rotate(${(1 - e) * -12}deg)`;
+    fly.style.opacity = "1";
+    // hand off: the card's own icon fades as the flying copy takes over
+    flySrc.style.opacity = String(Math.max(0, 1 - t * 4));
+  }
 
   function fitPhone(): void {
     if (!slot) return;
@@ -63,8 +97,16 @@ export function initShowcase(): void {
     stage!.style.setProperty("--phone-scale", phoneScale(room, avail).toFixed(4));
   }
 
-  fitPhone();
-  window.addEventListener("resize", fitPhone, { passive: true });
+  function relayout(): void {
+    fitPhone();
+    updateFly();
+  }
+
+  relayout();
+  // serif metrics change the panel heights, so measure again once fonts land
+  document.fonts?.ready.then(relayout).catch(() => {});
+  window.addEventListener("load", relayout);
+  window.addEventListener("resize", relayout, { passive: true });
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     stage.classList.add("static", "scene-3");
@@ -94,7 +136,7 @@ export function initShowcase(): void {
     const fill = scene > 1 ? 1 : scene === 1 ? sp : 0;
     stage!.style.setProperty("--fill", (0.55 + fill * 0.4).toFixed(4));
 
-    stage!.style.setProperty("--icon-p", iconProgress(p).toFixed(4));
+    updateFly();
 
     const count = document.getElementById("pwCountdown");
     if (count) count.textContent = countdownAt(p);

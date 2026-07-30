@@ -331,12 +331,16 @@
   }
 
   /* ================= Game ================= */
-  /* The game plays on the page itself: no card, no frame. The canvas is
-     transparent so items fall over the dotted paper. */
-  .game-shell { position: relative; }
+  /* The game sits in its own card so it reads as a thing you play, but the
+     canvas stays transparent so items fall over the card's own surface. */
+  .game-shell {
+    position: relative; background: var(--card);
+    border: 1px solid var(--hairline); border-radius: 24px;
+    padding: 20px; box-shadow: var(--shadow);
+  }
   .game-hud {
     display: flex; gap: 22px; align-items: baseline;
-    padding: 0 2px 12px; font-size: 13px; color: var(--ink2); flex-wrap: wrap;
+    padding: 2px 4px 12px; font-size: 13px; color: var(--ink2); flex-wrap: wrap;
   }
   .game-hud b { color: var(--ink); font-size: 19px; font-weight: 600; margin-left: 5px; }
   .game-hud .best b { color: var(--gold); }
@@ -347,7 +351,7 @@
   }
   #gameWrap::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: 34px; height: 1px;
-    background: linear-gradient(to right, transparent, var(--hairline) 12%, var(--hairline) 88%, transparent);
+    background: linear-gradient(to right, transparent, var(--hairline) 8%, var(--hairline) 92%, transparent);
     pointer-events: none;
   }
   #gameOverlay {
@@ -450,10 +454,10 @@
   .phone-slot {
     position: relative; justify-self: end;
     width: calc(290px * var(--phone-scale, 1));
-    height: calc(590px * var(--phone-scale, 1));
+    height: calc(688px * var(--phone-scale, 1));
   }
   .phone {
-    width: 290px; height: 590px; position: absolute; top: 0; left: 0;
+    width: 290px; height: 688px; position: absolute; top: 0; left: 0;
     transform: scale(var(--phone-scale, 1)) rotate(calc((var(--p, .5) - .5) * 3deg));
     transform-origin: top left;
     background: var(--ink); border-radius: 42px; padding: 10px;
@@ -469,6 +473,17 @@
     display: flex; flex-direction: column; padding: 58px 16px 16px;
   }
 
+  /* The Prayer Windows icon detaches from its app card and drags down to the
+     phone as you scroll. Position and size are set by JS each frame. */
+  .sc-flyicon {
+    position: fixed; z-index: 40; width: 62px; height: 62px; border-radius: 14.5px;
+    border: 1px solid var(--hairline); box-shadow: var(--shadow-lift);
+    opacity: 0; pointer-events: none; will-change: left, top, width;
+  }
+  html:not(.js) .sc-flyicon { display: none; }
+  @media (prefers-reduced-motion: reduce) { .sc-flyicon { display: none !important; } }
+  .app-icon { transition: opacity .25s linear; }
+
   /* Phone interior: the real Prayer Windows Today screen, verified against
      the app running in the iOS Simulator at Los Angeles (2026-07-29).
      Always the app's dark palette, as in the App Store screenshots. */
@@ -479,6 +494,10 @@
     background: var(--pw-paper); color: var(--pw-ink);
     gap: 0; padding: 44px 0 8px;
   }
+
+  /* Flex items must never shrink: squeezing is what was clipping the window
+     bar, the chart times, and the legend. */
+  .phone-screen > * { flex: none; }
 
   .pw-top {
     display: flex; justify-content: space-between; align-items: baseline;
@@ -507,13 +526,11 @@
     margin: 8px 10px; background: var(--pw-card); border: 1px solid var(--pw-hair);
     border-radius: 15px; text-align: center;
     display: flex; flex-direction: column; align-items: center; gap: 1px;
-    max-height: 0; opacity: 0; padding: 0 10px; overflow: hidden; border-width: 0;
-    transition: max-height .6s cubic-bezier(.16,1,.3,1), opacity .45s ease,
-                padding .6s ease, margin .6s ease, border-width .3s ease;
+    padding: 11px 10px 9px;
+    opacity: 0; transform: translateY(14px) scale(.97);
+    transition: opacity .5s ease, transform .6s cubic-bezier(.16,1,.3,1);
   }
-  .scene-1 .pw-hero, .scene-2 .pw-hero, .scene-3 .pw-hero {
-    max-height: 132px; opacity: 1; padding: 11px 10px 9px; border-width: 1px;
-  }
+  .scene-1 .pw-hero, .scene-2 .pw-hero, .scene-3 .pw-hero { opacity: 1; transform: none; }
   .pw-active {
     font-size: 6.6px; font-weight: 700; letter-spacing: .17em; color: var(--pw-rust);
     display: inline-flex; align-items: center; gap: 4px;
@@ -537,11 +554,11 @@
   .pw-barcap { font-size: 5.8px; letter-spacing: .16em; color: var(--pw-ink2); margin-top: 4px; }
 
   .pw-chart {
-    position: relative; padding: 0 10px;
-    max-height: 0; opacity: 0; overflow: hidden;
-    transition: max-height .6s cubic-bezier(.16,1,.3,1), opacity .45s ease, margin .6s ease;
+    position: relative; padding: 0 10px; margin: 6px 0 2px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .5s ease, transform .6s cubic-bezier(.16,1,.3,1);
   }
-  .scene-2 .pw-chart, .scene-3 .pw-chart { max-height: 108px; opacity: 1; margin: 6px 0 2px; }
+  .scene-2 .pw-chart, .scene-3 .pw-chart { opacity: 1; transform: none; }
   .pw-chart svg { width: 100%; height: 60px; display: block; overflow: visible; }
   .pw-chart-keys, .pw-chart-times { position: relative; height: 8px; }
   .pw-chart-keys span, .pw-chart-times span {
@@ -627,8 +644,8 @@
   html:not(.js) .sc-cap { position: static; opacity: 1; transform: none; margin-bottom: 12px; }
   html:not(.js) .pw-row, html:not(.js) .pw-top, html:not(.js) .pw-datebar, html:not(.js) .pw-vary,
   html:not(.js) .pw-sun-facts, html:not(.js) .pw-hanafi { opacity: 1; transform: none; }
-  html:not(.js) .pw-hero { max-height: 132px; opacity: 1; padding: 11px 10px 9px; border-width: 1px; }
-  html:not(.js) .pw-chart { max-height: 108px; opacity: 1; margin: 6px 0 2px; }
+  html:not(.js) .pw-hero { opacity: 1; transform: none; }
+  html:not(.js) .pw-chart { opacity: 1; transform: none; }
   html:not(.js) .phone-screen { --fill: .62; }
 
   /* static fallback: no pinning, everything shown */
@@ -660,14 +677,13 @@
   }
 
   /* ================= Contact ================= */
-  .contact {
-    background: var(--card); border: 1px solid var(--hairline);
-    border-radius: 26px; padding: 46px 30px 40px;
-    text-align: center; box-shadow: var(--shadow);
-  }
+  /* no card here: the section sits on the paper so the page doesn't end on
+     a card holding more cards */
+  .contact { padding: 8px 0 4px; text-align: center; }
   .contact > p { color: var(--ink2); margin-top: 8px; }
   .contact-btns { justify-content: center; margin-top: 24px; }
-  .contact-socials { justify-content: center; margin-top: 26px; }
+  .contact-socials { justify-content: center; margin-top: 24px; }
+  .contact .social { background: transparent; box-shadow: none; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
