@@ -73,6 +73,8 @@
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     background: var(--paper); color: var(--ink);
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1.4px);
+    background-size: 26px 26px;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     font-size: 15.5px; line-height: 1.6;
     -webkit-font-smoothing: antialiased; overflow-x: hidden;
@@ -423,11 +425,21 @@
     gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--ink3);
   }
 
+  /* ================= Hero entrance ================= */
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+  html.js header .eyebrow { animation: rise .7s cubic-bezier(.16,1,.3,1) backwards .05s; }
+  html.js header h1 { animation: rise .8s cubic-bezier(.16,1,.3,1) backwards .14s; }
+  html.js header .lede { animation: rise .8s cubic-bezier(.16,1,.3,1) backwards .24s; }
+  html.js header .btn-row { animation: rise .8s cubic-bezier(.16,1,.3,1) backwards .34s; }
+  html.js header .follow-row { animation: rise .8s cubic-bezier(.16,1,.3,1) backwards .42s; }
+  html.js header .hero-icons { animation: rise .8s cubic-bezier(.16,1,.3,1) backwards .5s; }
+  @media (prefers-reduced-motion: reduce) { html.js header * { animation: none !important; } }
+
   /* ================= Scroll reveals ================= */
   html.js [data-reveal] {
-    opacity: 0; transform: translateY(18px);
-    transition: opacity .65s ease var(--reveal-delay, 0ms),
-                transform .65s ease var(--reveal-delay, 0ms);
+    opacity: 0; transform: translateY(26px);
+    transition: opacity .8s cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms),
+                transform .8s cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms);
   }
   html.js [data-reveal].in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
@@ -458,6 +470,7 @@
 
   .phone {
     width: min(290px, 78vw); aspect-ratio: 290 / 590;
+    transform: rotate(calc((var(--p, .5) - .5) * 3deg));
     background: var(--ink); border-radius: 42px; padding: 10px;
     box-shadow: var(--shadow-lift); position: relative; justify-self: end;
   }
@@ -471,87 +484,120 @@
     display: flex; flex-direction: column; padding: 58px 16px 16px;
   }
 
-  .pw-sun {
-    position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%;
-    background: var(--gold); box-shadow: 0 0 22px 6px color-mix(in srgb, var(--gold) 45%, transparent);
-    transform: translate(calc(var(--sunx, 0) * 240px + 8px), calc(var(--suny, 1) * 46px + 40px));
-    transition: none; z-index: 1;
+  /* Phone interior: the real Prayer Windows Today screen, always in the
+     app's dark palette (matches the App Store screenshots exactly). */
+  .phone-screen {
+    --pw-paper: #18181C; --pw-card: #252429; --pw-ink: #F6F3EE;
+    --pw-ink2: #AAA6A5; --pw-hair: #3C3A40; --pw-rust: #D48169;
+    --pw-gold: #D9AB57; --pw-olive: #9FA789; --pw-twilight: #84A6C2;
+    background: var(--pw-paper); color: var(--pw-ink);
+    gap: 8px; padding: 50px 13px 12px;
   }
 
-  .pw-eyebrow {
-    font-size: 8.5px; font-weight: 700; letter-spacing: .13em; color: var(--rust-deep);
+  .pw-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .pw-top b { font-size: 16px; font-weight: 600; }
+  .pw-top span { font-size: 7px; letter-spacing: .14em; color: var(--pw-ink2); }
+  .pw-date { font-size: 8.5px; color: var(--pw-ink2); text-align: center; }
+  .pw-top, .pw-date {
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .45s ease calc(var(--i) * 80ms), transform .45s ease calc(var(--i) * 80ms);
   }
-  .pw-header b { display: block; font-size: 21px; font-weight: 500; margin: 2px 0 12px; }
+  .scene-0 .pw-top, .scene-1 .pw-top, .scene-2 .pw-top, .scene-3 .pw-top,
+  .scene-0 .pw-date, .scene-1 .pw-date, .scene-2 .pw-date, .scene-3 .pw-date { opacity: 1; transform: none; }
 
-  .pw-rows { display: flex; flex-direction: column; gap: 7px; position: relative; z-index: 2; }
+  .pw-hero {
+    background: var(--pw-card); border: 1px solid var(--pw-hair); border-radius: 14px;
+    padding: 10px 12px 9px; text-align: center;
+    display: flex; flex-direction: column; gap: 2px;
+    max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; margin: -4px 0;
+    overflow: hidden; border-width: 0;
+    transition: max-height .55s ease, opacity .45s ease, padding .55s ease, margin .55s ease;
+  }
+  .scene-1 .pw-hero, .scene-2 .pw-hero, .scene-3 .pw-hero {
+    max-height: 150px; opacity: 1; padding: 10px 12px 9px; margin: 0; border-width: 1px;
+  }
+  .pw-active { font-size: 7.5px; font-weight: 700; letter-spacing: .16em; color: var(--pw-rust); }
+  .pw-count { font-size: 34px; font-weight: 500; line-height: 1.1; }
+  .pw-ends { font-size: 9px; color: var(--pw-ink2); }
+  .pw-bar { position: relative; height: 5px; border-radius: 999px; background: var(--pw-hair); margin-top: 6px; }
+  .pw-bar-fill {
+    position: absolute; inset: 0; border-radius: 999px; background: var(--pw-rust);
+    transform-origin: left center; transform: scaleX(var(--fill, 0));
+  }
+  .pw-bar-knob {
+    position: absolute; top: 50%; left: calc(var(--fill, 0) * 100%);
+    width: 11px; height: 11px; border-radius: 50%; background: var(--pw-rust);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--pw-rust) 55%, transparent);
+  }
+  .pw-bar-labels { display: flex; justify-content: space-between; font-size: 7px; color: var(--pw-ink2); letter-spacing: .1em; margin-top: 3px; }
+
+  .pw-chart {
+    max-height: 0; opacity: 0; overflow: hidden; margin: -4px 0;
+    transition: max-height .55s ease, opacity .45s ease, margin .55s ease;
+  }
+  .scene-2 .pw-chart, .scene-3 .pw-chart { max-height: 96px; opacity: 1; margin: 0; }
+  .pw-chart svg { width: 100%; height: 62px; display: block; }
+  .pw-curve { fill: none; stroke: var(--pw-ink); stroke-width: 1.6; stroke-linecap: round; }
+  .pw-curve-alt { fill: none; stroke: var(--pw-ink2); stroke-width: 1; stroke-dasharray: 3 4; opacity: .55; }
+  .pw-dot { fill: var(--pw-ink); }
+  .pw-dot-active { fill: var(--pw-rust); }
+  .pw-legend { display: flex; gap: 8px; font-size: 6.5px; color: var(--pw-ink2); letter-spacing: .05em; }
+  .pw-legend b { margin-left: auto; color: var(--pw-rust); letter-spacing: .12em; font-size: 7px; }
+
+  .pw-rows { display: flex; flex-direction: column; position: relative; z-index: 2; }
   .pw-row {
-    background: var(--card); border: 1px solid var(--hairline); border-radius: 13px;
-    padding: 10px 13px; display: flex; justify-content: space-between; align-items: center;
-    font-size: 13px; color: var(--ink2);
-    opacity: 0; transform: translateY(14px);
-    transition: opacity .45s ease calc(var(--i) * 90ms), transform .45s ease calc(var(--i) * 90ms);
+    display: flex; align-items: center; gap: 6px;
+    padding: 6.5px 2px; border-bottom: 1px solid var(--pw-hair);
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .45s ease calc(var(--i) * 80ms), transform .45s ease calc(var(--i) * 80ms);
   }
-  .pw-row b { font-size: 15px; color: var(--ink); font-weight: 500; }
   .scene-0 .pw-row, .scene-1 .pw-row, .scene-2 .pw-row, .scene-3 .pw-row { opacity: 1; transform: none; }
+  .pw-row > .serif { font-size: 12.5px; }
+  .pw-row-active { background: color-mix(in srgb, var(--pw-card) 70%, transparent); border-radius: 8px; padding-left: 6px; padding-right: 6px; }
+  .pw-pdot { width: 5px; height: 5px; border-radius: 50%; background: var(--c, var(--pw-ink2)); flex-shrink: 0; }
+  .pw-t { margin-left: auto; text-align: right; line-height: 1.25; }
+  .pw-t b { display: block; font-size: 11.5px; font-weight: 500; }
+  .pw-t span { font-size: 7.5px; color: var(--pw-ink2); }
+  .pw-vary {
+    font-size: 6.5px; color: var(--pw-rust); margin-left: 2px;
+    opacity: 0; transition: opacity .5s ease .2s;
+  }
+  .scene-2 .pw-vary, .scene-3 .pw-vary { opacity: 1; }
 
-  .pw-asr { flex-direction: column; align-items: stretch; gap: 8px; }
-  .pw-asr-top { display: flex; justify-content: space-between; align-items: center; }
-  .pw-window {
-    position: relative; height: 26px; border-radius: 8px; background: var(--well);
-    border: 1px solid var(--hairline); overflow: hidden;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 8px; font-size: 8.5px; letter-spacing: .04em; color: var(--ink2);
-    max-height: 0; opacity: 0; margin-top: -8px; border-width: 0;
-    transition: max-height .5s ease, opacity .5s ease, margin-top .5s ease;
+  .pw-tabbar {
+    margin-top: auto; display: flex; justify-content: space-between;
+    background: var(--pw-card); border: 1px solid var(--pw-hair); border-radius: 999px;
+    padding: 7px 12px; font-size: 7.5px; color: var(--pw-ink2);
   }
-  .scene-1 .pw-window, .scene-2 .pw-window, .scene-3 .pw-window {
-    max-height: 26px; opacity: 1; margin-top: 0; border-width: 1px;
-  }
-  .pw-window-fill {
-    position: absolute; inset: 0; transform-origin: left center;
-    background: color-mix(in srgb, var(--rust) 30%, var(--well));
-    transform: scaleX(var(--fill, 0));
-  }
-  .pw-window-a, .pw-window-b { position: relative; }
-  .scene-1 .pw-asr, .scene-2 .pw-asr, .scene-3 .pw-asr { border-color: var(--rust); }
-
-  .pw-methods { margin-top: auto; opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
-  .scene-2 .pw-methods, .scene-3 .pw-methods { opacity: 1; transform: none; }
-  .pw-chips { display: flex; gap: 6px; margin-top: 7px; flex-wrap: wrap; }
-  .pw-chip {
-    font-size: 9.5px; font-weight: 600; padding: 6px 9px; border-radius: 999px;
-    background: var(--card); border: 1px solid var(--hairline); color: var(--ink2);
-    opacity: 0; transform: translateY(8px);
-    transition: opacity .4s ease calc(var(--i) * 110ms), transform .4s ease calc(var(--i) * 110ms);
-  }
-  .pw-chip b { margin-left: 3px; color: var(--ink); }
-  .scene-2 .pw-chip, .scene-3 .pw-chip { opacity: 1; transform: none; }
-  .scene-2 .pw-chip:nth-child(2) { border-color: var(--rust); }
+  .pw-tabbar .on { color: var(--pw-rust); font-weight: 700; }
 
   .pw-notif {
-    position: absolute; top: 12px; left: 12px; right: 12px; z-index: 4;
-    display: flex; gap: 9px; align-items: center;
-    background: color-mix(in srgb, var(--card) 92%, transparent);
+    position: absolute; top: 10px; left: 10px; right: 10px; z-index: 4;
+    display: flex; gap: 8px; align-items: center;
+    background: color-mix(in srgb, var(--pw-card) 94%, transparent);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--hairline); border-radius: 14px; padding: 9px 11px;
-    box-shadow: var(--shadow-lift);
-    transform: translateY(-84px); opacity: 0;
+    border: 1px solid var(--pw-hair); border-radius: 13px; padding: 8px 10px;
+    box-shadow: 0 14px 30px rgba(0,0,0,.45);
+    transform: translateY(-80px); opacity: 0;
     transition: transform .55s cubic-bezier(.2,.9,.3,1.1), opacity .4s ease;
   }
-  .pw-notif img { border-radius: 6.5px; }
-  .pw-notif b { display: block; font-size: 11px; color: var(--ink); }
-  .pw-notif span { font-size: 9.5px; color: var(--ink2); }
+  .pw-notif img { border-radius: 6px; }
+  .pw-notif b { display: block; font-size: 10.5px; color: var(--pw-ink); }
+  .pw-notif span { font-size: 8.5px; color: var(--pw-ink2); }
   .scene-3 .pw-notif { transform: none; opacity: 1; }
 
   /* no-JS fallback: scenes never activate, so show the finished state */
   html:not(.js) #showcase-scroll { height: auto; }
   html:not(.js) .showcase-pin { position: static; height: auto; padding: 30px 0; }
   html:not(.js) .sc-cap { position: static; opacity: 1; transform: none; margin-bottom: 12px; }
-  html:not(.js) .pw-row, html:not(.js) .pw-methods, html:not(.js) .pw-chip { opacity: 1; transform: none; }
-  html:not(.js) .pw-window { max-height: 26px; opacity: 1; margin-top: 0; border-width: 1px; }
-  html:not(.js) .pw-window-fill { transform: scaleX(.6); }
+  html:not(.js) .pw-row, html:not(.js) .pw-top, html:not(.js) .pw-date, html:not(.js) .pw-vary { opacity: 1; transform: none; }
+  html:not(.js) .pw-hero { max-height: 150px; opacity: 1; padding: 10px 12px 9px; margin: 0; border-width: 1px; }
+  html:not(.js) .pw-chart { max-height: 96px; opacity: 1; margin: 0; }
+  html:not(.js) .phone-screen { --fill: .62; }
 
   /* static fallback: no pinning, everything shown */
+  #showcase-stage.static .phone { transform: none; }
   #showcase-stage.static .sc-cap { position: static; opacity: 1; transform: none; margin-bottom: 12px; }
   @media (prefers-reduced-motion: reduce) {
     #showcase-scroll { height: auto; }

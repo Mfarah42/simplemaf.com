@@ -75,7 +75,7 @@
 </header>
 
 <div class="wrap">
-  <div class="stats">
+  <div class="stats" data-reveal-group>
     <div class="stat"><b class="serif">3</b><span>apps shipped to the App&nbsp;Store</span></div>
     <div class="stat"><b class="serif">100%</b><span>on-device, always</span></div>
     <div class="stat"><b class="serif">0</b><span>trackers, ever</span></div>
@@ -90,7 +90,7 @@
     <h2 class="serif">What I make videos about</h2>
     <p>AI news without the press-release language, whether new tech is worth the price, and what apps quietly do with your data. Tap a video for the numbers and sources that didn't fit in 45 seconds.</p>
   </div>
-  <div class="vid-list" id="vidList"></div>
+  <div class="vid-list" id="vidList" data-reveal></div>
   <div style="margin-top:26px">
     <a class="btn btn-primary btn-sm" data-social="tiktok" href="#">All videos on TikTok →</a>
   </div>
@@ -154,43 +154,50 @@
     <div id="showcase-stage" class="wrap">
       <div class="sc-captions">
         <p class="sc-cap" data-scene="0"><b class="serif">Five prayers a day.</b> Each one is a window, not a deadline.</p>
-        <p class="sc-cap" data-scene="1"><b class="serif">Every window begins and ends.</b> Watch Asr close as the sun drops.</p>
-        <p class="sc-cap" data-scene="2"><b class="serif">Trusted methods disagree by minutes.</b> See them side by side, honestly.</p>
+        <p class="sc-cap" data-scene="1"><b class="serif">Every window begins and ends.</b> Watch Maghrib tick down as you scroll.</p>
+        <p class="sc-cap" data-scene="2"><b class="serif">Trusted methods disagree by minutes.</b> The sun path shows every one, honestly.</p>
         <p class="sc-cap" data-scene="3"><b class="serif">A nudge before the window closes.</b> That's the whole point.<br><a class="applink" data-social="prayerwindows" href="#">In review on the App&nbsp;Store →</a></p>
       </div>
       <div class="phone" aria-hidden="true">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <div class="pw-sun"></div>
           <div class="pw-notif">
             <img src="assets/prayerwindows.png" alt="" width="26" height="26">
-            <div><b>Asr ends in 30 min</b><span>The window closes at 8:21</span></div>
+            <div><b>Maghrib ends in 30 min</b><span>The window closes at 9:45 PM</span></div>
           </div>
-          <div class="pw-header">
-            <span class="pw-eyebrow">TUESDAY · RAJAB 14</span>
+          <div class="pw-top" style="--i:0">
             <b class="serif">Prayer Windows</b>
+            <span>OAKLAND, CA</span>
+          </div>
+          <div class="pw-date" style="--i:1">Wednesday, July 29 · 15 Safar 1448 AH</div>
+          <div class="pw-hero">
+            <span class="pw-active">● MAGHRIB · ACTIVE NOW</span>
+            <b class="serif pw-count" id="pwCountdown">30:48</b>
+            <span class="pw-ends">Ends 9:45 PM</span>
+            <div class="pw-bar"><i class="pw-bar-fill"></i><i class="pw-bar-knob"></i></div>
+            <div class="pw-bar-labels"><span>8:21</span><span>PRAYER WINDOW</span><span>9:45</span></div>
+          </div>
+          <div class="pw-chart">
+            <svg viewBox="0 0 260 70" preserveAspectRatio="none">
+              <path class="pw-curve-alt" d="M14,60 L26,56 C48,40 96,12 124,12 C146,12 160,24 174,32 C190,42 206,54 216,58 L240,61"/>
+              <path class="pw-curve" d="M8,61 L20,57 C42,41 90,13 118,13 C140,13 154,25 168,33 C184,43 200,55 210,59 L234,62"/>
+              <circle cx="20" cy="57" r="3" class="pw-dot"/>
+              <circle cx="118" cy="13" r="3" class="pw-dot"/>
+              <circle cx="168" cy="33" r="3" class="pw-dot"/>
+              <circle cx="210" cy="59" r="4.5" class="pw-dot pw-dot-active"/>
+              <circle cx="234" cy="62" r="3" class="pw-dot"/>
+            </svg>
+            <div class="pw-legend"><span>— ISNA (yours)</span><span>--- other methods</span><b>COMPARE ›</b></div>
           </div>
           <div class="pw-rows">
-            <div class="pw-row" style="--i:0"><span>Fajr</span><b class="serif pw-fajr-time">4:42</b></div>
-            <div class="pw-row" style="--i:1"><span>Dhuhr</span><b class="serif">1:12</b></div>
-            <div class="pw-row pw-asr" style="--i:2">
-              <div class="pw-asr-top"><span>Asr</span><b class="serif">4:58</b></div>
-              <div class="pw-window">
-                <div class="pw-window-fill"></div>
-                <span class="pw-window-a">begins 4:58</span>
-                <span class="pw-window-b">ends 8:21</span>
-              </div>
-            </div>
-            <div class="pw-row" style="--i:3"><span>Maghrib</span><b class="serif">8:21</b></div>
-            <div class="pw-row" style="--i:4"><span>Isha</span><b class="serif">9:46</b></div>
+            <div class="pw-row" style="--i:2"><i class="pw-pdot" style="--c:var(--pw-twilight)"></i><span class="serif">Fajr</span><span class="pw-vary">varies 23 min · why ›</span><div class="pw-t"><b class="serif">4:46 AM</b><span>until 6:10 AM</span></div></div>
+            <div class="pw-row" style="--i:3"><i class="pw-pdot" style="--c:var(--pw-gold)"></i><span class="serif">Dhuhr</span><div class="pw-t"><b class="serif">1:18 PM</b><span>until 5:06 PM</span></div></div>
+            <div class="pw-row" style="--i:4"><i class="pw-pdot" style="--c:var(--pw-olive)"></i><span class="serif">Asr</span><div class="pw-t"><b class="serif">5:06 PM</b><span>until 8:21 PM</span></div></div>
+            <div class="pw-row pw-row-active" style="--i:5"><i class="pw-pdot" style="--c:var(--pw-rust)"></i><span class="serif">Maghrib</span><div class="pw-t"><b class="serif">8:21 PM</b><span>until 9:45 PM</span></div></div>
+            <div class="pw-row" style="--i:6"><i class="pw-pdot" style="--c:var(--pw-twilight)"></i><span class="serif">Isha</span><div class="pw-t"><b class="serif">9:45 PM</b><span>until 12:33 AM</span></div></div>
           </div>
-          <div class="pw-methods">
-            <span class="pw-eyebrow">FAJR BY METHOD</span>
-            <div class="pw-chips">
-              <span class="pw-chip" style="--i:0">ISNA <b class="serif">4:42</b></span>
-              <span class="pw-chip" style="--i:1">MWL <b class="serif">4:28</b></span>
-              <span class="pw-chip" style="--i:2">Umm al-Qura <b class="serif">4:35</b></span>
-            </div>
+          <div class="pw-tabbar">
+            <span class="on">Today</span><span>Month</span><span>Qibla</span><span>Masjids</span><span>Settings</span>
           </div>
         </div>
       </div>
@@ -204,7 +211,7 @@
     <span class="eyebrow">Now</span>
     <h2 class="serif">What I'm working on</h2>
   </div>
-  <div class="panel">
+  <div class="panel" data-reveal>
     <p><span class="pulse"></span><b>On the bench this week</b></p>
     <p style="color:var(--ink2); max-width:68ch; margin-top:12px">Stockd v1.3.0 is in App Store review with a new icon. Prayer Windows is getting AlarmKit so Fajr can actually wake you up. And I'm recording explainers on the AI terms that keep showing up in headlines undefined.</p>
     <p class="stamp">Updated July 2026</p>
@@ -219,7 +226,7 @@
     <h2 class="serif">Run the math: lease vs. buy</h2>
     <p>Every pricing video gets the same comment: “but what about my situation?” Fair. Here's the arithmetic with your numbers instead of mine. It all runs in your browser and nothing is sent anywhere.</p>
   </div>
-  <div class="calc">
+  <div class="calc" data-reveal-group>
     <div class="panel calc-fields">
       <div class="field">
         <label for="cPrice">Sticker price if you just buy it<span class="hint">What it costs outright, before tax.</span></label>
@@ -264,7 +271,7 @@
 
 <!-- ================= MANIFESTO + SPEC TABLE ================= -->
 <section class="wrap">
-  <div class="manifesto">
+  <div class="manifesto" data-reveal>
     <span class="eyebrow">The Promise</span>
     <h2 class="serif">No ads. No accounts. No tracking. Ever.</h2>
     <p>I spend a lot of airtime explaining how companies make money off your data. It would be strange to turn around and do the same thing. So here's the claim as a spec sheet you can check, app by app.</p>
@@ -309,7 +316,7 @@
     <h2 class="serif">Ship It</h2>
     <p>Thirty seconds of my job: catch the features, dodge the bugs. Drag anywhere on the board, or use the ← → keys.</p>
   </div>
-  <div class="game-shell">
+  <div class="game-shell" data-reveal>
     <div class="game-hud">
       <span>Shipped <b id="score">0</b></span>
       <span>Time <b id="time">30</b>s</span>
@@ -338,7 +345,7 @@
 
 <!-- ================= CONTACT ================= -->
 <section id="collab" class="wrap">
-  <div class="contact">
+  <div class="contact" data-reveal>
     <span class="eyebrow">Contact</span>
     <h2 class="serif">Get in touch</h2>
     <p>Collabs, press, or a video idea.</p>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SCENES, sceneAt, sunPos } from "../src/features/showcase";
+import { SCENES, countdownAt, sceneAt, sunPos } from "../src/features/showcase";
 
 describe("sceneAt", () => {
   it("splits progress into equal scenes", () => {
@@ -19,6 +19,26 @@ describe("sceneAt", () => {
   it("within-scene progress spans 0..1", () => {
     const { sp } = sceneAt(0.375); // middle of scene 1
     expect(sp).toBeCloseTo(0.5);
+  });
+});
+
+describe("countdownAt", () => {
+  it("holds 30:48 before the hero scene", () => {
+    expect(countdownAt(0)).toBe("30:48");
+    expect(countdownAt(0.24)).toBe("30:48");
+  });
+
+  it("reaches 5:12 at the end", () => {
+    expect(countdownAt(1)).toBe("5:12");
+    expect(countdownAt(2)).toBe("5:12");
+  });
+
+  it("counts down monotonically with zero-padded seconds", () => {
+    const mid = countdownAt(0.6);
+    expect(mid).toMatch(/^\d{1,2}:\d{2}$/);
+    const toSecs = (s: string) => Number(s.split(":")[0]) * 60 + Number(s.split(":")[1]);
+    expect(toSecs(countdownAt(0.3))).toBeGreaterThan(toSecs(countdownAt(0.6)));
+    expect(toSecs(countdownAt(0.6))).toBeGreaterThan(toSecs(countdownAt(0.9)));
   });
 });
 

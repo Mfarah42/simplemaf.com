@@ -18,6 +18,16 @@ export function sunPos(p: number): { x: number; y: number } {
   return { x: t, y: 4 * (t - 0.5) * (t - 0.5) }; // 1 at edges, 0 at noon
 }
 
+/** The Maghrib countdown scrubs from 30:48 down to 5:12 across scenes 1-3. */
+export function countdownAt(p: number): string {
+  const FULL = 30 * 60 + 48;
+  const FLOOR = 5 * 60 + 12;
+  if (p < 0.25) return "30:48";
+  const t = Math.min(1, (p - 0.25) / 0.75);
+  const secs = Math.round(FULL - t * (FULL - FLOOR));
+  return `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+}
+
 export function initShowcase(): void {
   const region = document.getElementById("showcase-scroll");
   const stage = document.getElementById("showcase-stage");
@@ -49,7 +59,10 @@ export function initShowcase(): void {
     }
     // the window-fill bar scrubs through scene 1 and stays full after
     const fill = scene > 1 ? 1 : scene === 1 ? sp : 0;
-    stage!.style.setProperty("--fill", fill.toFixed(4));
+    stage!.style.setProperty("--fill", (0.55 + fill * 0.4).toFixed(4));
+
+    const count = document.getElementById("pwCountdown");
+    if (count) count.textContent = countdownAt(p);
   }
 
   function onScroll(): void {
