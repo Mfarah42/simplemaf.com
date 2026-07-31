@@ -28,6 +28,7 @@ export function createGtag(dataLayer: unknown[]): (...args: unknown[]) => void {
 export function initAnalytics(): boolean {
   const id = ANALYTICS.measurementId;
   if (!isValidMeasurementId(id)) return false;
+  if (/^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)) return false;
 
   const w = window as unknown as {
     dataLayer?: unknown[];
