@@ -38,7 +38,7 @@ function injectCsp(): Plugin {
 }
 
 // The whole build collapses into dist/index.html: JS and CSS inlined,
-// the three app icons inlined as data URIs. One file, zero requests.
+// the app icons inlined as data URIs. One file, zero requests.
 export default defineConfig({
   plugins: [injectCsp(), viteSingleFile()],
   build: {

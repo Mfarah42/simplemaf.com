@@ -15,6 +15,9 @@ export function applyLink(el: Element, key: string): boolean {
   if (!url.startsWith("mailto:")) {
     el.setAttribute("target", "_blank");
     el.setAttribute("rel", "noopener noreferrer");
+  } else if ((el as HTMLElement).dataset?.["emailText"] !== undefined) {
+    // a visible copy of the address, so nobody has to open a mail client to read it
+    el.textContent = url.slice("mailto:".length);
   }
   return true;
 }

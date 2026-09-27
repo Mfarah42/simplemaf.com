@@ -11,7 +11,12 @@ products (cash-back cards, banking apps).
 Apps (all data stays on the user's device, none collect data):
 - Stockd, smart grocery lists: https://apps.apple.com/us/app/stockd-smart-grocery-lists/id6761667432
 - Cadence, shift calendar for rotation work: https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175
-- Prayer Windows, honest prayer times: https://apps.apple.com/us/app/prayer-windows/id6793598476
+- Prayer Windows, honest prayer times: https://apps.apple.com/us/app/prayer-windows-salah-times/id6793598476
+- Quran, the Madinah mushaf with word-by-word audio (Android version coming soon): https://apps.apple.com/us/app/quran-madinah-mushaf-audio/id6809227627
+- Sweep, street sweeping alerts for San Francisco and Oakland: https://apps.apple.com/us/app/sweep-street-sweeping-alerts/id6807645821
+- Tiny Critic, a baby food diary written as one-star reviews: https://apps.apple.com/us/app/tiny-critic-baby-food-diary/id6812938189
+
+Contact: SimpleMafs@gmail.com
 
 Links:
 - TikTok (all videos): https://www.tiktok.com/@simplemaf

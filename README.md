@@ -37,12 +37,13 @@ tests/                vitest suite: calculator math, escaping, URL
 
 Everything you'd routinely touch lives in [src/config.ts](src/config.ts):
 
-1. **LINKS** – TikTok and Bluesky are set. Still placeholder: `stockd` and
-   `prayerwindows` App Store URLs, and `email`. Any link still containing
-   `YOUR_` stays inert on the page, so nothing half-filled ever goes live.
-2. **VIDEOS** – newest first. Optional per video: `url`, `receipt` (the
-   numbers behind the video), `note`, `sources`. Rows with receipts expand
-   in place; rows without link to TikTok.
+1. **LINKS** – socials, the contact email, and one App Store URL per app.
+   Any link still containing `YOUR_` stays inert on the page, so nothing
+   half-filled ever goes live.
+2. **VIDEOS** – the most-watched videos, highest first. Optional per video:
+   `url`, `views` (exact count, shown rounded), `receipt` (the numbers behind
+   the video), `note`, `sources`. Rows with receipts expand in place; rows
+   without link to TikTok.
 3. **STACK** – gear list. A few entries are educated guesses; swap in the
    real gear.
 

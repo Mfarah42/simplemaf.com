@@ -47,3 +47,23 @@ describe("normalizeVideo", () => {
     expect(v?.sources).toEqual([{ label: "ok", url: "https://example.com" }]);
   });
 });
+
+describe("views", () => {
+  it("keeps a positive finite view count and drops anything else", async () => {
+    const { normalizeVideo } = await import("../src/features/videos");
+    expect(normalizeVideo({ date: "d", title: "t", views: 54600 })?.views).toBe(54600);
+    expect(normalizeVideo({ date: "d", title: "t", views: 1234.9 })?.views).toBe(1234);
+    expect(normalizeVideo({ date: "d", title: "t", views: "1.2M" })?.views).toBeUndefined();
+    expect(normalizeVideo({ date: "d", title: "t", views: -5 })?.views).toBeUndefined();
+    expect(normalizeVideo({ date: "d", title: "t", views: Infinity })?.views).toBeUndefined();
+  });
+
+  it("formats counts the way TikTok shows them", async () => {
+    const { formatViews } = await import("../src/features/videos");
+    expect(formatViews(1_200_000)).toBe("1.2M");
+    expect(formatViews(1_000_000)).toBe("1M");
+    expect(formatViews(974_700)).toBe("974.7K");
+    expect(formatViews(54_600)).toBe("54.6K");
+    expect(formatViews(999)).toBe("999");
+  });
+});

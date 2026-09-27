@@ -6,10 +6,13 @@
 export const LINKS: Record<string, string> = {
   tiktok: "https://www.tiktok.com/@simplemaf",
   bluesky: "https://bsky.app/profile/simplemaf.bsky.social",
-  email: "mailto:YOUR_EMAIL",
+  email: "mailto:SimpleMafs@gmail.com",
   stockd: "https://apps.apple.com/us/app/stockd-smart-grocery-lists/id6761667432",
-  prayerwindows: "https://apps.apple.com/us/app/prayer-windows/id6793598476",
+  prayerwindows: "https://apps.apple.com/us/app/prayer-windows-salah-times/id6793598476",
   cadence: "https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175",
+  quran: "https://apps.apple.com/us/app/quran-madinah-mushaf-audio/id6809227627",
+  sweep: "https://apps.apple.com/us/app/sweep-street-sweeping-alerts/id6807645821",
+  tinycritic: "https://apps.apple.com/us/app/tiny-critic-baby-food-diary/id6812938189",
 };
 
 /** Google Analytics 4. Paste the Measurement ID from
@@ -36,6 +39,8 @@ export interface Video {
   tags?: string;
   /** Direct link to the video. Without it the row links to the TikTok profile. */
   url?: string;
+  /** Exact view count. Shown rounded (1.2M, 54.6K) next to the tags. */
+  views?: number;
   /** The numbers that wouldn't fit in 45 seconds. */
   receipt?: ReceiptCell[];
   /** The fine print / caveat. */
@@ -44,33 +49,43 @@ export interface Video {
   sources?: VideoSource[];
 }
 
-/** Newest first. Only add receipts with numbers you've verified.
+/** Most watched first. Only add receipts with numbers you've verified.
     A videos.json next to index.html overrides this list (see videos.ts). */
 export const VIDEOS: Video[] = [
   {
-    date: "Jul 28",
-    title: "Would you lease an iPhone?",
-    tags: "#leasingiphone #apple #klarna #applelease",
+    date: "Nov 2025",
+    title: "It's been fun, PS5",
+    tags: "#steammachine #playstation #techtok",
+    url: "https://www.tiktok.com/@simplemaf/video/7573522930324294967",
+    views: 1_200_000,
   },
   {
-    date: "Jul 27",
-    title: "Elon's new bank card pays 6%. Here's what it costs you.",
-    tags: "#xmoney #elonmusk #privacy",
+    date: "Aug 2026",
+    title: "Claude adds a watermark to everything it generates",
+    tags: "#claude #anthropic #watermark #ainews",
+    url: "https://www.tiktok.com/@simplemaf/video/7672906094364151071",
+    views: 974_700,
   },
   {
-    date: "Jul 26",
-    title: "AI distillation, explained",
-    tags: "#techtok #aitools #claude #anthropic",
+    date: "Jul 2026",
+    title: "5 products worth every penny",
+    tags: "#worthit #personalfinance #claude",
+    url: "https://www.tiktok.com/@simplemaf/video/7659145009140190495",
+    views: 499_600,
   },
   {
-    date: "Jul 22",
-    title: "Have you seen the prices for the new Samsung folds?",
-    tags: "#samsungfold #fold8ultra",
+    date: "Sep 2026",
+    title: "Meta Muse trains on your data by default. Turn it off.",
+    tags: "#metamuse #aiagent #privacy #technews",
+    url: "https://www.tiktok.com/@simplemaf/video/7688576331314924831",
+    views: 100_600,
   },
   {
-    date: "Jul 12",
-    title: "Fable 5 extended again? Why?",
-    tags: "#anthropic #grok #gpt #ainews",
+    date: "Sep 2026",
+    title: "iPhone 18 Pro Max vs iPhone 16 Pro Max",
+    tags: "#iphone18promax #camerareview #iphoneupgrade",
+    url: "https://www.tiktok.com/@simplemaf/video/7687436220527299870",
+    views: 54_600,
   },
 ];
 

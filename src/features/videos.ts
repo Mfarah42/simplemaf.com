@@ -6,6 +6,14 @@ import { registerReveals } from "./reveal";
 const MAX_VIDEOS = 8;
 const MAX_JSON_BYTES = 64 * 1024;
 
+/** 1234567 -> "1.2M", 54600 -> "54.6K", 999 -> "999". */
+export function formatViews(n: number): string {
+  const trim = (s: string) => s.replace(/\.0$/, "");
+  if (n >= 1_000_000) return `${trim((n / 1_000_000).toFixed(1))}M`;
+  if (n >= 1_000) return `${trim((n / 1_000).toFixed(1))}K`;
+  return String(Math.max(0, Math.floor(n)));
+}
+
 function hasReceipt(v: Video): boolean {
   return Boolean(v.receipt?.length || v.note || v.sources?.length);
 }
@@ -40,7 +48,7 @@ export function renderVideos(videos: Video[]): void {
         <span class="kicker">${esc(v.date)}</span>
         <span class="vb">
           <h3 class="serif">${esc(v.title)}</h3>
-          <span class="tags mono">${esc(v.tags ?? "")}</span>
+          <span class="tags mono">${v.views ? `<b class="views">${esc(formatViews(v.views))} views</b> · ` : ""}${esc(v.tags ?? "")}</span>
         </span>
         <span class="mark" aria-hidden="true">${expandable ? "Receipts" : "Watch ↗"}</span>
       </button>
@@ -91,6 +99,8 @@ export function normalizeVideo(v: unknown): Video | null {
   if (note) out.note = note;
   const url = str(o["url"]);
   if (url && safeUrl(url)) out.url = url;
+  const views = o["views"];
+  if (typeof views === "number" && Number.isFinite(views) && views > 0) out.views = Math.floor(views);
 
   if (Array.isArray(o["receipt"])) {
     const cells = (o["receipt"] as unknown[]).flatMap((r) => {
@@ -207,6 +217,15 @@ export function injectVideoJsonLd(videos: Video[]): void {
         name: v.title,
         url: safeUrl(v.url) ?? profile,
         creator: { "@type": "Person", name: "Mohamed", alternateName: "SimpleMAF" },
+        ...(v.views
+          ? {
+              interactionStatistic: {
+                "@type": "InteractionCounter",
+                interactionType: "https://schema.org/WatchAction",
+                userInteractionCount: v.views,
+              },
+            }
+          : {}),
       },
     })),
   };
