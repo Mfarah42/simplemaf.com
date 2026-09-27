@@ -13,8 +13,9 @@ import { initLinks } from "./features/links";
 import { initVideos } from "./features/videos";
 import { initStack } from "./features/stack";
 import { initStats } from "./features/stats";
+import { initCadence } from "./features/cadence";
+import { initAppStore } from "./features/appstore";
 import { initTheme } from "./features/theme";
-import { initGame } from "./features/game";
 import { initPalette } from "./features/palette";
 import { initReveal } from "./features/reveal";
 import { initShowcase } from "./features/showcase";
@@ -28,9 +29,10 @@ initLinks();
 initVideos();
 initStack();
 initStats();
+initCadence();
+initAppStore();
 const theme = initTheme();
-const game = initGame();
-initPalette({ cycleTheme: theme.cycle, startGame: game.start });
+initPalette({ cycleTheme: theme.cycle });
 // the wordmark returns to the very top, not just to the hero anchor
 document.querySelector(".nav-name")?.addEventListener("click", (e) => {
   e.preventDefault();

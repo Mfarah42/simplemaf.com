@@ -6,11 +6,13 @@
   "description": "SimpleMAF creator site. TypeScript source, single static HTML artifact.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/appstore.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "tsc --noEmit && vitest run"
+    "check": "tsc --noEmit && vitest run",
+    "appstore": "node scripts/appstore.mjs",
+    "og": "mkdir -p /tmp/simplemaf-og && '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --hide-scrollbars --no-first-run --disable-extensions --user-data-dir=/tmp/simplemaf-og/profile --force-device-scale-factor=2 --window-size=1200,630 --screenshot=/tmp/simplemaf-og/og2x.png \"file://$PWD/scripts/og.html\" && sips -z 630 1200 /tmp/simplemaf-og/og2x.png --out public/og.png"
   },
   "devDependencies": {
     "jsdom": "^25",

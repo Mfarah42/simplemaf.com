@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Mondays 14:17 UTC: rebuild so the App Store version and rating data on
+  # the app cards stays current without a commit.
+  schedule:
+    - cron: "17 14 * * 1"
 
 # Least privilege; the deploy job gets Pages scopes only.
 permissions:

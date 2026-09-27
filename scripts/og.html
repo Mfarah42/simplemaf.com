@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; position: relative;
+    background: #FEFBF6;
+    background-image: radial-gradient(#DEDAD5 1.1px, transparent 1.1px);
+    background-size: 24px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: #19191D; -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: "New York", ui-serif, "Iowan Old Style", Georgia, serif; }
+  .card { position: absolute; inset: 44px; border: 1px solid #DEDAD5; border-radius: 34px; background: rgba(251,248,242,.92); box-shadow: 0 1px 2px rgba(25,25,29,.03); }
+  .inner { position: absolute; left: 76px; right: 76px; top: 64px; bottom: 66px; }
+  .eyebrow { font-size: 16px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #9E5340; }
+  h1 { font-weight: 500; font-size: 98px; line-height: 1.0; letter-spacing: -0.03em; margin: 20px 0 0; }
+  h1 em { font-style: italic; color: #C97A62; }
+  .lede { font-size: 26px; line-height: 1.35; color: #5A5655; margin: 22px 0 0; max-width: 1000px; white-space: nowrap; }
+  .lede b { color: #19191D; font-weight: 600; }
+  .row { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; }
+  .icons { display: flex; align-items: center; }
+  .icons img { width: 72px; height: 72px; border-radius: 17px; border: 1px solid #DEDAD5; box-shadow: 0 14px 30px rgba(25,25,29,.10); background: #fff; }
+  .icons img + img { margin-left: -18px; }
+  .icons span { margin-left: 22px; font-size: 20px; color: #767268; }
+  .handle { display: flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 600; color: #19191D; }
+  .handle svg { width: 30px; height: 30px; fill: #19191D; }
+  .handle small { font-weight: 500; color: #767268; font-size: 22px; margin-left: 10px; }
+  .wordmark { position: absolute; right: 0; top: -6px; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; }
+  .wordmark i { font-style: normal; color: #C97A62; }
+</style></head>
+<body>
+<div class="card"><div class="inner">
+  <div class="eyebrow">Tech · Money · Bay Area</div>
+  <div class="wordmark serif">SimpleMAF<i>.</i></div>
+  <h1 class="serif">I explain tech<br>and <em>money</em>.</h1>
+  <p class="lede">Short videos that keep AI, tech, and what things cost <b>simple</b>. Plus six iOS apps.</p>
+  <div class="row">
+    <div class="icons">
+      <img src="../assets/quran.png" alt=""><img src="../assets/cadence.png" alt=""><img src="../assets/prayerwindows.png" alt=""><img src="../assets/sweep.png" alt=""><img src="../assets/tinycritic.png" alt=""><img src="../assets/stockd.png" alt="">
+      <span>All six on the App Store</span>
+    </div>
+    <div class="handle">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      @simplemaf <small>simplemaf.com</small>
+    </div>
+  </div>
+</div></div>
+</body></html>

@@ -27,9 +27,9 @@ src/config.ts         ALL editable content: LINKS, VIDEOS, TERMS, STACK
 src/styles.css        the Prayer Windows design language, light + dark
 src/lib/dom.ts        esc(), safeUrl() allowlist, storage helpers
 src/features/*.ts     one module per section (videos, calculator, theme,
-                      game, stack, links, ⌘K palette)
+                      stack, stats, cadence demo, appstore, links, ⌘K palette)
 tests/                vitest suite: calculator math, escaping, URL
-                      sanitizing, videos.json normalization, game scoring
+                      sanitizing, videos.json normalization, rotation math
 .github/workflows/    check → build → deploy to Pages
 ```
 
@@ -47,7 +47,21 @@ Everything you'd routinely touch lives in [src/config.ts](src/config.ts):
 3. **STACK** – gear list. A few entries are educated guesses; swap in the
    real gear.
 
-Push to `main` and CI ships it — if the tests pass.
+Push to `main` and CI ships it — if the tests pass. The workflow also
+rebuilds every Monday so the App Store data on the cards stays current.
+
+### App Store data
+
+`npm run build` first runs `scripts/appstore.mjs`, which asks the public
+App Store lookup API for each app's version, update date, and rating and
+writes `src/generated/appstore.json`. The JSON is committed as a snapshot so
+an offline build still works; a failed fetch keeps the snapshot untouched.
+
+### Share card
+
+`public/og.png` (1200×630) is what iMessage, Bluesky, and link previews
+show. Regenerate it from `scripts/og.html` with headless Chrome:
+`npm run og`.
 
 ### Videos without a rebuild
 
@@ -76,7 +90,7 @@ scheme-checked, so a malformed row degrades to being skipped, never to XSS.
 - No external requests except Google Analytics (only once a Measurement ID
   is set in config) and the optional
   same-origin `videos.json` (the page says so, so keep it true).
-- Best game score and theme choice live in the visitor's localStorage only.
+- The theme choice lives in the visitor's localStorage only.
 - Colors are the Prayer Windows theme tokens (`Theme.swift`), nudged only
   where needed to pass WCAG AA contrast in both modes.
 - No em-dashes in copy. House style.

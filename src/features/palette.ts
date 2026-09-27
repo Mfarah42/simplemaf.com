@@ -8,8 +8,8 @@ export interface Command {
 }
 
 /** ⌘K / Ctrl+K command palette. Every action is local: navigation, theme,
-    game, and opening the socials that are actually configured. */
-export function initPalette(deps: { cycleTheme: () => void; startGame: () => void }): void {
+    and opening the socials that are actually configured. */
+export function initPalette(deps: { cycleTheme: () => void }): void {
   const jump = (sel: string) => () =>
     document.querySelector(sel)?.scrollIntoView({ behavior: "smooth", block: "start" });
   const open = (key: string) => () => {
@@ -23,14 +23,6 @@ export function initPalette(deps: { cycleTheme: () => void; startGame: () => voi
     { label: "Go to stack", hint: "/uses", run: jump("#stack") },
     { label: "Get in touch", hint: "collabs and requests", run: jump("#collab") },
     { label: "Toggle theme", hint: "auto → light → dark", run: deps.cycleTheme },
-    {
-      label: "Play Ship It",
-      hint: "30 seconds",
-      run: () => {
-        jump("#play")();
-        setTimeout(deps.startGame, 450);
-      },
-    },
     ...(resolved("tiktok")
       ? [{ label: "Open TikTok", hint: "@simplemaf", run: open("tiktok") }]
       : []),
