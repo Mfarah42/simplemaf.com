@@ -6,7 +6,7 @@
 export const LINKS: Record<string, string> = {
   tiktok: "https://www.tiktok.com/@simplemaf",
   bluesky: "https://bsky.app/profile/simplemaf.bsky.social",
-  email: "mailto:SimpleMafs@gmail.com",
+  email: "mailto:hello@simplemaf.com",
   stockd: "https://apps.apple.com/us/app/stockd-smart-grocery-lists/id6761667432",
   prayerwindows: "https://apps.apple.com/us/app/prayer-windows-salah-times/id6793598476",
   cadence: "https://apps.apple.com/us/app/cadence-am-i-on-or-off/id6786077175",
