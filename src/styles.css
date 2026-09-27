@@ -201,6 +201,7 @@
     border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
     padding: 26px 0; margin-bottom: 84px;
   }
+  header .stats { margin-top: 46px; margin-bottom: 0; }
   .stat { text-align: center; padding: 0 8px; }
   .stat + .stat { border-left: 1px solid var(--hairline); }
   .stat b { display: block; font-size: 29px; font-weight: 500; line-height: 1.15; }

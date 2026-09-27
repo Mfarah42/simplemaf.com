@@ -23,6 +23,17 @@ export const ANALYTICS = {
   measurementId: "G-7R2W4LPMZN",
 };
 
+/** The numbers under the hero. Exact values; the page rounds them (2.9M, 131.4K).
+    Refresh from tiktok.com/@simplemaf now and then; asOf is shown nowhere, it is
+    just a reminder of when these were true. */
+export const STATS = {
+  asOf: "Sep 27, 2026",
+  tiktokViews: 2_941_151,
+  tiktokLikes: 131_400,
+  videos: 44,
+  apps: 6,
+};
+
 export interface ReceiptCell {
   label: string;
   value: string;

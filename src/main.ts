@@ -12,6 +12,7 @@ if (window.top !== window.self) {
 import { initLinks } from "./features/links";
 import { initVideos } from "./features/videos";
 import { initStack } from "./features/stack";
+import { initStats } from "./features/stats";
 import { initTheme } from "./features/theme";
 import { initGame } from "./features/game";
 import { initPalette } from "./features/palette";
@@ -26,6 +27,7 @@ initAnalytics();
 initLinks();
 initVideos();
 initStack();
+initStats();
 const theme = initTheme();
 const game = initGame();
 initPalette({ cycleTheme: theme.cycle, startGame: game.start });
